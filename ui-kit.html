@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NTREPYD — Hero Design Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;background:#0a0e17;color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── Kit Nav ── */
+.kit-nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:64px;
+  background:rgba(8,11,22,0.92);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.kit-logo{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.08em;color:#fff}
+.kit-logo span{color:#14B8A6}
+.kit-pills{display:flex;gap:8px}
+.kit-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;border-radius:100px;font-size:.8125rem;font-weight:600;
+  border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,.55);
+  text-decoration:none;transition:all .2s;letter-spacing:.04em;
+}
+.kit-pill:hover,.kit-pill.active{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.35)}
+.kit-pill-dot{width:7px;height:7px;border-radius:50%}
+.kit-badge-rec{
+  font-size:.6875rem;font-weight:700;letter-spacing:.08em;padding:3px 8px;
+  border-radius:4px;background:rgba(20,184,166,.2);color:#14B8A6;text-transform:uppercase;
+}
+
+/* ── Cover ── */
+.cover{
+  height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 40px;position:relative;overflow:hidden;
+  background:#080B16;
+}
+.cover-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 30%,transparent 100%);
+}
+.cover h1{font-family:'Sora',sans-serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:20px}
+.cover h1 em{font-style:normal;color:#14B8A6}
+.cover p{font-size:1.0625rem;color:rgba(255,255,255,.5);max-width:540px;line-height:1.75;margin-bottom:48px}
+.cover-options{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:800px;width:100%}
+.cover-option{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;padding:20px 16px;text-align:center;text-decoration:none;
+  transition:all .25s;
+}
+.cover-option:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);transform:translateY(-3px)}
+.cover-option-letter{font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;line-height:1;margin-bottom:8px}
+.cover-option-name{font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:.04em}
+.scroll-hint{position:absolute;bottom:36px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.35;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.scroll-arrow{width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.5));margin:0 auto}
+
+/* ── Section wrapper ── */
+.option-section{position:relative;height:100vh;overflow:hidden;display:flex;flex-direction:column}
+.option-label{
+  position:absolute;top:80px;right:32px;z-index:10;
+  font-family:'Sora',sans-serif;font-size:.6875rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;padding:6px 14px;border-radius:4px;
+}
+.option-desc{
+  position:absolute;bottom:0;left:0;right:0;z-index:10;
+  padding:28px 48px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+  background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 100%);
+}
+.option-desc-text h4{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px}
+.option-desc-text p{font-size:.9375rem;color:rgba(255,255,255,.75);max-width:480px;line-height:1.6}
+.option-tags{display:flex;gap:8px;flex-shrink:0}
+.tag{font-size:.6875rem;font-weight:600;letter-spacing:.06em;padding:5px 12px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.55);white-space:nowrap}
+
+/* ═══════ OPCIÓN A — COSMOS ═══════ */
+#opcion-a{background:#0A1628}
+#opcion-a .option-label{background:rgba(29,78,216,.25);color:#93C5FD;border:1px solid rgba(59,130,246,.3)}
+#canvas-a{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.a-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);
+}
+.a-glow{position:absolute;top:-10%;left:-5%;width:55vw;height:65vh;background:radial-gradient(ellipse,rgba(29,78,216,.18) 0%,transparent 65%);pointer-events:none}
+.a-glow-t{position:absolute;bottom:-10%;right:-5%;width:45vw;height:55vh;background:radial-gradient(ellipse,rgba(13,148,136,.14) 0%,transparent 65%)}
+.a-inner{
+  position:relative;z-index:2;flex:1;display:grid;grid-template-columns:1fr 1fr;gap:64px;
+  align-items:center;max-width:1160px;margin:0 auto;padding:80px 40px 120px;width:100%;
+}
+.a-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:100px;padding:6px 16px;margin-bottom:28px;
+  font-size:.8125rem;color:rgba(255,255,255,.7);
+}
+.a-dot{width:6px;height:6px;background:#14B8A6;border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.a-h1{font-family:'Sora',sans-serif;font-size:clamp(2.2rem,3.8vw,3.6rem);font-weight:700;line-height:1.12;letter-spacing:-.025em;color:#fff;margin-bottom:22px}
+.a-h1 em{font-style:normal;color:#14B8A6}
+.a-p{font-size:1.0625rem;color:rgba(255,255,255,.58);max-width:500px;line-height:1.8;margin-bottom:36px}
+.a-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:6px;font-size:.9375rem;font-weight:600;background:#1D4ED8;color:#fff;text-decoration:none;transition:all .25s}
+.btn-p:hover{background:#1741B5;transform:translateY(-1px)}
+.btn-o{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:6px;font-size:.9375rem;font-weight:600;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3);text-decoration:none;transition:all .25s}
+.btn-o:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.6)}
+.a-stats{display:flex;gap:36px;margin-top:48px;padding-top:36px;border-top:1px solid rgba(255,255,255,.07)}
+.a-stat-v{font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;line-height:1}
+.a-stat-l{font-size:.8rem;color:rgba(255,255,255,.45);margin-top:4px}
+.a-svg{width:100%;max-width:460px;animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes node-p{0%,100%{opacity:1}50%{opacity:.45}}
+.snode{animation:node-p 3s ease-in-out infinite}
+.snode:nth-child(odd){animation-delay:.6s}
+.snode:nth-child(even){animation-delay:1.4s}
+
+/* ═══════ OPCIÓN B — AURORA ═══════ */
+#opcion-b{background:#060A12}
+#opcion-b .option-label{background:rgba(139,92,246,.2);color:#C4B5FD;border:1px solid rgba(139,92,246,.3)}
+.b-aurora{position:absolute;inset:0;overflow:hidden}
+.b-blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.35}
+.b-blob-1{width:70vw;height:70vw;background:radial-gradient(circle,#0D2A4A,transparent);top:-15%;left:-15%;animation:drift1 18s ease-in-out infinite}
+.b-blob-2{width:55vw;height:55vw;background:radial-gradient(circle,#0D3F3A,transparent);top:20%;right:-10%;animation:drift2 22s ease-in-out infinite}
+.b-blob-3{width:45vw;height:45vw;background:radial-gradient(circle,#1A0A38,transparent);bottom:-10%;left:20%;animation:drift3 26s ease-in-out infinite}
+.b-blob-4{width:35vw;height:35vw;background:radial-gradient(circle,#0A2A1E,transparent);bottom:10%;right:10%;animation:drift1 20s ease-in-out infinite reverse}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(8%,6%) scale(1.08)}66%{transform:translate(-5%,10%) scale(.95)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-10%,-8%) scale(1.12)}}
+@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(6%,-8%) scale(1.05)}80%{transform:translate(-4%,6%) scale(.98)}}
+.b-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");opacity:.4}
+.b-inner{
+  position:relative;z-index:2;flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:80px 40px 120px;max-width:800px;margin:0 auto;width:100%;
+}
+.b-eyebrow{font-size:.8125rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.b-eyebrow::before,.b-eyebrow::after{content:'';flex:1;max-width:40px;height:1px;background:rgba(255,255,255,.2)}
+.b-h1{font-family:'Sora',sans-serif;font-size:clamp(2.6rem,5.5vw,5rem);font-weight:800;line-height:1.06;letter-spacing:-.03em;margin-bottom:24px}
+.b-h1 em{font-style:normal;background:linear-gradient(135deg,#38BDF8,#14B8A6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.b-p{font-size:1.125rem;color:rgba(255,255,255,.5);max-width:560px;line-height:1.8;margin-bottom:44px}
+.b-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-t{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:6px;font-size:.9375rem;font-weight:600;background:#0D9488;color:#fff;text-decoration:none;transition:all .25s}
+.btn-t:hover{background:#0A7C72;transform:translateY(-1px)}
+.b-divider{width:1px;height:48px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.15),transparent);margin:48px auto 0}
+.b-metrics{display:flex;gap:48px;justify-content:center;margin-top:8px}
+.b-metric-v{font-family:'Sora',sans-serif;font-size:1.5rem;font-weight:700;text-align:center;line-height:1}
+.b-metric-l{font-size:.75rem;color:rgba(255,255,255,.4);text-align:center;margin-top:6px;letter-spacing:.04em;text-transform:uppercase}
+
+/* ═══════ OPCIÓN C — EDITORIAL ═══════ */
+#opcion-c{background:#F7F5F1}
+#opcion-c .option-label{background:rgba(10,22,40,.08);color:#1D4ED8;border:1px solid rgba(29,78,216,.2)}
+.c-topbar{height:4px;background:linear-gradient(90deg,#1D4ED8,#0D9488);position:absolute;top:0;left:0;right:0;z-index:5}
+.c-inner{
+  position:relative;z-index:2;flex:1;display:grid;grid-template-columns:1.1fr 0.9fr;
+  gap:0;align-items:stretch;
+}
+.c-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:100px 56px 100px 64px;
+}
+.c-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0D9488;margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.c-eyebrow::before{content:'';width:24px;height:2px;background:#0D9488}
+.c-h1{font-family:'Sora',sans-serif;font-size:clamp(2.2rem,3.8vw,3.8rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;color:#0A1628;margin-bottom:24px}
+.c-h1 em{font-style:normal;color:#1D4ED8}
+.c-p{font-size:1.0625rem;color:#6B7280;max-width:460px;line-height:1.8;margin-bottom:40px}
+.c-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-c-p{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:6px;font-size:.9375rem;font-weight:600;background:#0A1628;color:#fff;text-decoration:none;transition:all .25s}
+.btn-c-p:hover{background:#0D1F3C}
+.btn-c-o{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:6px;font-size:.9375rem;font-weight:600;background:transparent;color:#0A1628;border:1.5px solid #D1D5DB;text-decoration:none;transition:all .25s}
+.btn-c-o:hover{border-color:#1D4ED8;color:#1D4ED8}
+.c-right{
+  background:#0A1628;display:flex;flex-direction:column;justify-content:center;
+  padding:60px 48px;position:relative;overflow:hidden;
+}
+.c-right-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.c-right-glow{position:absolute;top:-20%;right:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(13,148,136,.15),transparent 65%)}
+.c-modules-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px;position:relative;z-index:1}
+.c-modules{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;z-index:1}
+.c-module{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;padding:18px 16px;transition:all .25s;
+}
+.c-module:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.15)}
+.c-module-icon{font-size:1.25rem;margin-bottom:10px}
+.c-module-name{font-size:.875rem;font-weight:600;color:#fff;margin-bottom:4px}
+.c-module-sub{font-size:.75rem;color:rgba(255,255,255,.4);line-height:1.5}
+.c-wordmark{position:absolute;bottom:28px;right:32px;font-family:'Sora',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.15);z-index:1}
+
+/* ═══════ OPCIÓN D — HUMAN IMPACT ═══════ */
+#opcion-d{background:#070C14}
+#opcion-d .option-label{background:rgba(20,184,166,.15);color:#5EEAD4;border:1px solid rgba(20,184,166,.25)}
+.d-bg-num{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Sora',sans-serif;font-size:clamp(20rem,40vw,52rem);font-weight:800;
+  color:rgba(255,255,255,.022);line-height:1;pointer-events:none;white-space:nowrap;
+  letter-spacing:-.05em;
+}
+.d-glow{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse 60% 80% at 15% 50%,rgba(13,148,136,.09) 0%,transparent 60%)}
+.d-glow2{position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse 60% 60% at 80% 40%,rgba(29,78,216,.08) 0%,transparent 60%)}
+.d-inner{
+  position:relative;z-index:2;flex:1;display:grid;grid-template-columns:1fr 1.1fr;
+  gap:64px;align-items:center;max-width:1160px;margin:0 auto;padding:80px 40px 120px;width:100%;
+}
+.d-left{display:flex;flex-direction:column;gap:28px}
+.d-stat{
+  display:flex;flex-direction:column;padding:32px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;border-left:3px solid #14B8A6;
+}
+.d-stat-v{font-family:'Sora',sans-serif;font-size:3.2rem;font-weight:800;line-height:1;color:#fff;letter-spacing:-.02em}
+.d-stat-v span{font-size:1.4rem;color:#14B8A6}
+.d-stat-l{font-size:.875rem;color:rgba(255,255,255,.5);margin-top:8px;line-height:1.6}
+.d-stat2{border-left-color:#3B82F6}
+.d-stat2 .d-stat-v span{color:#60A5FA}
+.d-right{}
+.d-eyebrow{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#14B8A6;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.d-eyebrow::before{content:'';width:20px;height:2px;background:#14B8A6}
+.d-h1{font-family:'Sora',sans-serif;font-size:clamp(2rem,3.5vw,3.4rem);font-weight:700;line-height:1.12;letter-spacing:-.02em;color:#fff;margin-bottom:20px}
+.d-h1 em{font-style:normal;color:#14B8A6}
+.d-p{font-size:1.0625rem;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:36px}
+.d-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ═══════ Recommendation section ═══════ */
+.rec-section{background:#080B16;padding:80px 40px;border-top:1px solid rgba(255,255,255,.06)}
+.rec-inner{max-width:1100px;margin:0 auto}
+.rec-title{font-family:'Sora',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:8px}
+.rec-sub{color:rgba(255,255,255,.45);font-size:.9375rem;margin-bottom:48px}
+.rec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.rec-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:24px;position:relative;transition:border-color .2s}
+.rec-card.recommended{border-color:rgba(20,184,166,.4);background:rgba(13,148,136,.06)}
+.rec-tag{display:inline-block;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:14px}
+.rec-letter{font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;line-height:1;margin-bottom:10px}
+.rec-name{font-size:1rem;font-weight:600;color:#fff;margin-bottom:10px}
+.rec-desc{font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:16px}
+.rec-for{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px}
+.rec-audiences{display:flex;flex-wrap:wrap;gap:6px}
+.rec-audience{font-size:.6875rem;padding:3px 10px;border-radius:100px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5)}
+.rec-rec-badge{
+  position:absolute;top:-12px;right:16px;
+  background:#0D9488;color:#fff;font-size:.625rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;padding:4px 10px;border-radius:100px;
+}
+
+/* ── Mobile ── */
+@media(max-width:768px){
+  .kit-pills{display:none}
+  .cover-options{grid-template-columns:1fr 1fr}
+  .a-inner,.d-inner{grid-template-columns:1fr}
+  .a-svg,.d-left{display:none}
+  .c-inner{grid-template-columns:1fr}
+  .c-right{display:none}
+  .b-metrics{gap:24px;flex-wrap:wrap}
+  .rec-grid{grid-template-columns:1fr 1fr}
+  .option-desc{padding:20px 24px;flex-direction:column;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="kit-nav">
+  <div class="kit-logo">NTR<span>EPY</span>D <span style="color:rgba(255,255,255,.3);font-weight:400;font-size:.875rem;margin-left:8px">Hero Design Kit</span></div>
+  <div class="kit-pills">
+    <a href="#opcion-a" class="kit-pill"><span class="kit-pill-dot" style="background:#3B82F6"></span>A — Cosmos</a>
+    <a href="#opcion-b" class="kit-pill"><span class="kit-pill-dot" style="background:#8B5CF6"></span>B — Aurora</a>
+    <a href="#opcion-c" class="kit-pill"><span class="kit-pill-dot" style="background:#1D4ED8"></span>C — Editorial</a>
+    <a href="#opcion-d" class="kit-pill"><span class="kit-pill-dot" style="background:#14B8A6"></span>D — Human Impact <span class="kit-badge-rec">Rec.</span></a>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-grid"></div>
+  <p style="font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;font-weight:600">Exploración de Diseño · Mayo 2025</p>
+  <h1>Hero Design<br><em>Exploration</em></h1>
+  <p>Cuatro propuestas visuales distintas para el encabezado de ntrepyd.com — cada una con personalidad, mood y audiencia diferente. Desplace hacia abajo para ver cada opción a pantalla completa.</p>
+  <div class="cover-options">
+    <a href="#opcion-a" class="cover-option">
+      <div class="cover-option-letter" style="color:#3B82F6">A</div>
+      <div class="cover-option-name">Cosmos</div>
+    </a>
+    <a href="#opcion-b" class="cover-option">
+      <div class="cover-option-letter" style="color:#8B5CF6">B</div>
+      <div class="cover-option-name">Aurora</div>
+    </a>
+    <a href="#opcion-c" class="cover-option">
+      <div class="cover-option-letter" style="color:#1D4ED8">C</div>
+      <div class="cover-option-name">Editorial</div>
+    </a>
+    <a href="#opcion-d" class="cover-option" style="border-color:rgba(20,184,166,.35);background:rgba(13,148,136,.06)">
+      <div class="cover-option-letter" style="color:#14B8A6">D</div>
+      <div class="cover-option-name">Human Impact</div>
+    </a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll para ver opciones</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ═══ OPCIÓN A — COSMOS ═══ -->
+<section class="option-section" id="opcion-a">
+  <canvas id="canvas-a"></canvas>
+  <div class="a-grid"></div>
+  <div class="a-glow"></div>
+  <div class="a-glow-t"></div>
+  <div class="option-label">A — COSMOS</div>
+
+  <div class="a-inner">
+    <div>
+      <div class="a-badge"><span class="a-dot"></span>Inclusive Digital Infrastructure</div>
+      <h1 class="a-h1">Digital access to<br><em>essential services</em><br>for underserved communities.</h1>
+      <p class="a-p">NTREPYD enables vulnerable populations to access identity, financial, healthcare, education and daily services through one inclusive digital ecosystem.</p>
+      <div class="a-actions">
+        <a href="#" class="btn-p">Explore the Platform →</a>
+        <a href="#" class="btn-o">Partner with NTREPYD</a>
+      </div>
+      <div class="a-stats">
+        <div><div class="a-stat-v">6</div><div class="a-stat-l">Service Modules</div></div>
+        <div><div class="a-stat-v">Global</div><div class="a-stat-l">Deployment Ready</div></div>
+        <div><div class="a-stat-v">1</div><div class="a-stat-l">Unified Platform</div></div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;align-items:center">
+      <svg class="a-svg" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="ra1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#14B8A6" stop-opacity=".22"/><stop offset="100%" stop-color="#14B8A6" stop-opacity="0"/></radialGradient>
+          <radialGradient id="ra2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#3B82F6" stop-opacity=".18"/><stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle cx="240" cy="240" r="220" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+        <circle cx="240" cy="240" r="175" stroke="rgba(255,255,255,.06)" stroke-width="1" stroke-dasharray="6 4"/>
+        <circle cx="240" cy="240" r="120" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <circle cx="240" cy="240" r="160" fill="url(#ra1)"/>
+        <circle cx="240" cy="240" r="100" fill="url(#ra2)"/>
+        <circle cx="240" cy="240" r="42" fill="#0A1628" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+        <text x="240" y="236" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="11" fill="white" letter-spacing="2">NTR</text>
+        <text x="240" y="252" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="11" fill="#14B8A6" letter-spacing="2">EPYD</text>
+        <line x1="240" y1="198" x2="240" y2="120" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle class="snode" cx="240" cy="72" r="34" fill="#0F2044" stroke="rgba(20,184,166,.5)" stroke-width="1.5"/>
+        <text x="240" y="68" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">🪪</text>
+        <text x="240" y="84" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif">Identity</text>
+        <line x1="277" y1="216" x2="350" y2="140" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle class="snode" cx="381" cy="115" r="34" fill="#0F2044" stroke="rgba(59,130,246,.5)" stroke-width="1.5"/>
+        <text x="381" y="111" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">💳</text>
+        <text x="381" y="127" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif">Finance</text>
+        <line x1="277" y1="265" x2="350" y2="342" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle class="snode" cx="381" cy="368" r="34" fill="#0F2044" stroke="rgba(20,184,166,.5)" stroke-width="1.5"/>
+        <text x="381" y="364" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">🏥</text>
+        <text x="381" y="380" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif">Health</text>
+        <line x1="240" y1="282" x2="240" y2="362" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle class="snode" cx="240" cy="410" r="34" fill="#0F2044" stroke="rgba(59,130,246,.5)" stroke-width="1.5"/>
+        <text x="240" y="406" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">🎓</text>
+        <text x="240" y="422" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif">Education</text>
+        <line x1="203" y1="265" x2="130" y2="342" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle class="snode" cx="99" cy="368" r="34" fill="#0F2044" stroke="rgba(20,184,166,.5)" stroke-width="1.5"/>
+        <text x="99" y="364" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">🌐</text>
+        <text x="99" y="380" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif">Services</text>
+        <line x1="203" y1="216" x2="130" y2="140" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle class="snode" cx="99" cy="115" r="34" fill="#0F2044" stroke="rgba(59,130,246,.5)" stroke-width="1.5"/>
+        <text x="99" y="111" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">🤝</text>
+        <text x="99" y="127" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif">Community</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="option-desc">
+    <div class="option-desc-text">
+      <h4>A — Cosmos</h4>
+      <p>Red de partículas animadas sobre navy profundo. Diagrama de ecosistema como visual principal. Transmite tecnología de punta, precisión y escala global. Ideal para inversores y socios fintech.</p>
+    </div>
+    <div class="option-tags">
+      <span class="tag">Inversores</span><span class="tag">FinTech</span><span class="tag">Tech Partners</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OPCIÓN B — AURORA ═══ -->
+<section class="option-section" id="opcion-b">
+  <div class="b-aurora">
+    <div class="b-blob b-blob-1"></div>
+    <div class="b-blob b-blob-2"></div>
+    <div class="b-blob b-blob-3"></div>
+    <div class="b-blob b-blob-4"></div>
+    <div class="b-noise"></div>
+  </div>
+  <div class="option-label">B — AURORA</div>
+
+  <div class="b-inner">
+    <div class="b-eyebrow">Inclusive Digital Infrastructure</div>
+    <h1 class="b-h1">Connecting people<br>to <em>the services<br>they deserve.</em></h1>
+    <p class="b-p">NTREPYD bridges the gap between underserved communities and the identity, financial, healthcare and education services they need — through one unified, trusted digital platform.</p>
+    <div class="b-actions">
+      <a href="#" class="btn-p">Explore the Platform →</a>
+      <a href="#" class="btn-t">Partner with NTREPYD</a>
+    </div>
+    <div class="b-divider"></div>
+    <div class="b-metrics">
+      <div><div class="b-metric-v">1.4B+</div><div class="b-metric-l">Unbanked Adults</div></div>
+      <div><div class="b-metric-v">1B+</div><div class="b-metric-l">Without Identity</div></div>
+      <div><div class="b-metric-v">6</div><div class="b-metric-l">Platform Modules</div></div>
+    </div>
+  </div>
+
+  <div class="option-desc">
+    <div class="option-desc-text">
+      <h4>B — Aurora</h4>
+      <p>Fondo muy oscuro con blobs de gradiente en movimiento lento (teal, azul, verde profundo). Layout centrado, cinematográfico. Transmite visión, premium institucional y escala. Ideal para presentaciones ante gobiernos y organismos internacionales.</p>
+    </div>
+    <div class="option-tags">
+      <span class="tag">Gobiernos</span><span class="tag">ONGs</span><span class="tag">Org. Internacionales</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OPCIÓN C — EDITORIAL ═══ -->
+<section class="option-section" id="opcion-c">
+  <div class="c-topbar"></div>
+  <div class="option-label" style="top:88px">C — EDITORIAL</div>
+
+  <div class="c-inner">
+    <div class="c-left">
+      <div class="c-eyebrow">Inclusive Digital Platform</div>
+      <h1 class="c-h1">Digital access to<br><em>essential services</em><br>for underserved<br>communities.</h1>
+      <p class="c-p">NTREPYD enables vulnerable populations to access identity, financial, healthcare, education and daily services through one inclusive digital ecosystem — regardless of documentation, language or location.</p>
+      <div class="c-actions">
+        <a href="#" class="btn-c-p">Explore the Platform →</a>
+        <a href="#" class="btn-c-o">Partner with Us</a>
+      </div>
+    </div>
+    <div class="c-right">
+      <div class="c-right-grid"></div>
+      <div class="c-right-glow"></div>
+      <div class="c-modules-label">Platform Modules</div>
+      <div class="c-modules">
+        <div class="c-module"><div class="c-module-icon">🪪</div><div class="c-module-name">Digital Identity</div><div class="c-module-sub">Biometric, portable, no docs required</div></div>
+        <div class="c-module"><div class="c-module-icon">💳</div><div class="c-module-name">Financial Services</div><div class="c-module-sub">Payments, credit, savings & insurance</div></div>
+        <div class="c-module"><div class="c-module-icon">🏥</div><div class="c-module-name">Healthcare</div><div class="c-module-sub">Telemedicine & medicine access</div></div>
+        <div class="c-module"><div class="c-module-icon">🎓</div><div class="c-module-name">Upskilling</div><div class="c-module-sub">Certified training & job matching</div></div>
+        <div class="c-module"><div class="c-module-icon">🤝</div><div class="c-module-name">Community</div><div class="c-module-sub">Local networks & peer support</div></div>
+        <div class="c-module"><div class="c-module-icon">🌐</div><div class="c-module-name">Partner Services</div><div class="c-module-sub">Open API for institutions</div></div>
+      </div>
+      <div class="c-wordmark">NTREPYD</div>
+    </div>
+  </div>
+
+  <div class="option-desc" style="background:linear-gradient(to top,rgba(247,245,241,.95) 0%,transparent 100%)">
+    <div class="option-desc-text">
+      <h4 style="color:rgba(10,22,40,.4)">C — Editorial</h4>
+      <p style="color:rgba(10,22,40,.65)">Fondo blanco/crema con tipografía oscura bold. Panel derecho oscuro con los 6 módulos de la plataforma. Estilo institucional, limpio y de máxima confianza. Ideal para instituciones financieras, bancos de desarrollo y auditores.</p>
+    </div>
+    <div class="option-tags" style="gap:8px">
+      <span class="tag" style="border-color:rgba(10,22,40,.15);color:rgba(10,22,40,.5)">Bancos</span>
+      <span class="tag" style="border-color:rgba(10,22,40,.15);color:rgba(10,22,40,.5)">Inst. Financieras</span>
+      <span class="tag" style="border-color:rgba(10,22,40,.15);color:rgba(10,22,40,.5)">Reguladores</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OPCIÓN D — HUMAN IMPACT ═══ -->
+<section class="option-section" id="opcion-d">
+  <div class="d-bg-num">1.4B</div>
+  <div class="d-glow"></div>
+  <div class="d-glow2"></div>
+  <div class="option-label">D — HUMAN IMPACT ★ Recomendada</div>
+
+  <div class="d-inner">
+    <div class="d-left">
+      <div class="d-stat">
+        <div class="d-stat-v">1.4<span>B+</span></div>
+        <div class="d-stat-l">adults worldwide without access to a bank account — trapped outside the formal economy.</div>
+      </div>
+      <div class="d-stat d-stat2">
+        <div class="d-stat-v">1<span>B+</span></div>
+        <div class="d-stat-l">people living without legal proof of identity — invisible to the systems built to serve them.</div>
+      </div>
+    </div>
+    <div class="d-right">
+      <div class="d-eyebrow">One Platform. One Solution.</div>
+      <h1 class="d-h1">Everyone deserves access to <em>essential services.</em></h1>
+      <p class="d-p">NTREPYD is a unified digital platform that gives vulnerable and underserved populations access to identity, financial, healthcare, education and essential services — starting from a single, portable digital identity that requires no prior documentation.</p>
+      <div class="d-actions">
+        <a href="#" class="btn-t">Explore the Platform →</a>
+        <a href="#" class="btn-o">Partner with NTREPYD</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="option-desc">
+    <div class="option-desc-text">
+      <h4>D — Human Impact <span style="color:#14B8A6;margin-left:6px">★ Recomendada</span></h4>
+      <p>Combina impacto emocional con autoridad institucional. Los datos reales en el panel izquierdo anclan el problema. El headline es aspiracional y humano. La tipografía grande de fondo refuerza la escala sin ser técnica. Funciona para todos los públicos clave.</p>
+    </div>
+    <div class="option-tags">
+      <span class="tag" style="border-color:rgba(20,184,166,.4);color:#5EEAD4">Todos los públicos</span>
+      <span class="tag">Inversores de impacto</span><span class="tag">Gobiernos</span><span class="tag">ONGs</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RECOMMENDATION ═══ -->
+<section class="rec-section">
+  <div class="rec-inner">
+    <h2 class="rec-title">Comparación de opciones</h2>
+    <p class="rec-sub">Cada opción prioriza una audiencia y un mensaje distintos. Esta tabla resume las diferencias clave.</p>
+    <div class="rec-grid">
+
+      <div class="rec-card">
+        <div class="rec-tag" style="background:rgba(59,130,246,.12);color:#93C5FD">Opción A</div>
+        <div class="rec-letter" style="color:#3B82F6">A</div>
+        <div class="rec-name">Cosmos</div>
+        <p class="rec-desc">Partículas animadas, ecosistema SVG, navy profundo. Enfoque tecnológico controlado. Transmite escala, innovación y precisión digital.</p>
+        <div class="rec-for">Mejor para</div>
+        <div class="rec-audiences">
+          <span class="rec-audience">Tech investors</span>
+          <span class="rec-audience">FinTech partners</span>
+          <span class="rec-audience">Web3 ecosystem</span>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-tag" style="background:rgba(139,92,246,.12);color:#C4B5FD">Opción B</div>
+        <div class="rec-letter" style="color:#8B5CF6">B</div>
+        <div class="rec-name">Aurora</div>
+        <p class="rec-desc">Gradientes fluidos oscuros, layout centrado, métricas bajo el CTA. Cinematográfico y premium. Transmite visión e impacto global.</p>
+        <div class="rec-for">Mejor para</div>
+        <div class="rec-audiences">
+          <span class="rec-audience">Governments</span>
+          <span class="rec-audience">Int'l orgs</span>
+          <span class="rec-audience">Flagship events</span>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-tag" style="background:rgba(29,78,216,.1);color:#93C5FD">Opción C</div>
+        <div class="rec-letter" style="color:#1D4ED8">C</div>
+        <div class="rec-name">Editorial</div>
+        <p class="rec-desc">Fondo blanco, tipografía oscura, panel de módulos. El más formal y corporativo. Transmite máxima confianza y claridad de producto.</p>
+        <div class="rec-for">Mejor para</div>
+        <div class="rec-audiences">
+          <span class="rec-audience">Banks</span>
+          <span class="rec-audience">Regulators</span>
+          <span class="rec-audience">Dev. finance</span>
+        </div>
+      </div>
+
+      <div class="rec-card recommended">
+        <div class="rec-rec-badge">★ Recomendada</div>
+        <div class="rec-tag" style="background:rgba(20,184,136,.15);color:#5EEAD4">Opción D</div>
+        <div class="rec-letter" style="color:#14B8A6">D</div>
+        <div class="rec-name">Human Impact</div>
+        <p class="rec-desc">Datos reales como ancla visual, headline aspiracional, dark premium. Equilibra impacto emocional con autoridad institucional. El que mejor comunica la misión para todos los públicos.</p>
+        <div class="rec-for">Mejor para</div>
+        <div class="rec-audiences">
+          <span class="rec-audience">All audiences</span>
+          <span class="rec-audience">Impact investors</span>
+          <span class="rec-audience">NGOs</span>
+          <span class="rec-audience">Governments</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:48px;padding:28px 32px;background:rgba(20,184,136,.07);border:1px solid rgba(20,184,136,.2);border-radius:12px;display:flex;gap:20px;align-items:flex-start">
+      <div style="font-size:1.5rem;flex-shrink:0">💡</div>
+      <div>
+        <p style="font-size:.9375rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:6px">Nota del diseñador</p>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0">La <strong style="color:rgba(255,255,255,.75)">Opción D (Human Impact)</strong> es la recomendación principal porque equilibra datos concretos con un mensaje aspiracional — el mismo equilibrio que NTREPYD necesita para convencer simultáneamente a inversores de impacto, gobiernos e instituciones financieras. Si la audiencia principal son inversores tech o VC, la <strong style="color:rgba(255,255,255,.75)">Opción A</strong> es la alternativa más sólida. La <strong style="color:rgba(255,255,255,.75)">Opción C</strong> funciona especialmente bien para instituciones financieras y reguladores que priorizan claridad y confianza sobre emoción.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ── Canvas A — Particle network ── */
+(function() {
+  const canvas = document.getElementById('canvas-a');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let pts = [], raf;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width  = rect.width;
+    canvas.height = rect.height;
+    init();
+  }
+
+  function init() {
+    pts = [];
+    const n = Math.min(80, Math.floor(canvas.width * canvas.height / 12000));
+    for (let i = 0; i < n; i++) {
+      pts.push({
+        x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+        vx: (Math.random() - .5) * .42, vy: (Math.random() - .5) * .42,
+        r: Math.random() * 1.7 + .7,
+        hue: Math.random() > .55 ? 174 : 217
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${p.hue},75%,65%,.6)`;
+      ctx.fill();
+      for (let j = i + 1; j < pts.length; j++) {
+        const q = pts[j];
+        const dx = p.x - q.x, dy = p.y - q.y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 135) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = `rgba(99,160,255,${.14*(1-d/135)})`;
+          ctx.lineWidth = .55; ctx.stroke();
+        }
+      }
+    }
+    raf = requestAnimationFrame(draw);
+  }
+
+  resize(); draw();
+  window.addEventListener('resize', () => { cancelAnimationFrame(raf); resize(); }, { passive: true });
+})();
+
+/* ── Smooth nav active state ── */
+const sections = document.querySelectorAll('.option-section');
+const pills = document.querySelectorAll('.kit-pill');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      pills.forEach(p => p.classList.remove('active'));
+      const active = document.querySelector(`.kit-pill[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: .5 });
+sections.forEach(s => io.observe(s));
+</script>
+</body>
+</html>

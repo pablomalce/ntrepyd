@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NTREPYD | Digital Access to Essential Services for Underserved Communities</title>
+  <meta name="description" content="NTREPYD is an inclusive digital platform helping vulnerable populations access identity, financial, healthcare, education and essential services through one secure ecosystem." />
+  <meta property="og:title" content="NTREPYD | Digital Access to Essential Services" />
+  <meta property="og:description" content="Bridging the digital divide for underserved communities worldwide." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ntrepyd.com/" />
+  <meta property="og:image" content="https://ntrepyd.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NTREPYD | Digital Access to Essential Services" />
+  <meta name="twitter:description" content="Bridging the digital divide for underserved communities worldwide." />
+  <meta name="twitter:image" content="https://ntrepyd.com/og-image.png" />
+  <meta name="robots" content="index, follow" />
+  <!-- Favicon – replace /favicon.svg with your real logo file -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A1628'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Sora,sans-serif' font-weight='700' font-size='13' fill='%2314B8A6'%3EN%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A1628'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Sora,sans-serif' font-weight='700' font-size='13' fill='%2314B8A6'%3EN%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #111827;
+      background: #FAFAF9;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── Design Tokens ─── */
+    :root {
+      --navy:       #0A1628;
+      --navy-mid:   #0F2044;
+      --blue:       #1D4ED8;
+      --blue-light: #3B82F6;
+      --teal:       #0D9488;
+      --teal-light: #14B8A6;
+      --white:      #FFFFFF;
+      --off-white:  #FAFAF9;
+      --gray-50:    #F9FAFB;
+      --gray-100:   #F3F4F6;
+      --gray-200:   #E5E7EB;
+      --gray-400:   #9CA3AF;
+      --gray-500:   #6B7280;
+      --gray-700:   #374151;
+      --black-soft: #111827;
+      --radius-sm:  6px;
+      --radius-md:  12px;
+      --radius-lg:  20px;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+      --shadow-md:  0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
+      --shadow-lg:  0 20px 48px rgba(0,0,0,.12), 0 8px 16px rgba(0,0,0,.06);
+      --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─── Typography ─── */
+    h1, h2, h3, h4 { font-family: 'Sora', 'Inter', sans-serif; line-height: 1.15; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; }
+    h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; }
+    h4 { font-size: 1rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    p { line-height: 1.75; color: var(--gray-500); font-size: 1.0625rem; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Layout Utilities ─── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section--dark { background: var(--navy); color: var(--white); }
+    .section--dark p { color: rgba(255,255,255,0.62); }
+    .section--mid { background: var(--navy-mid); color: var(--white); }
+    .section--mid p { color: rgba(255,255,255,0.62); }
+    .section--gray { background: var(--gray-100); }
+    .label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 20px;
+    }
+    .label::before {
+      content: ''; width: 24px; height: 2px; background: var(--teal); flex-shrink: 0;
+    }
+    .label--light { color: var(--teal-light); }
+    .label--light::before { background: var(--teal-light); }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--radius-sm);
+      font-size: 0.9375rem; font-weight: 600; cursor: pointer;
+      border: none; transition: all var(--transition); white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+    .btn--primary {
+      background: var(--blue); color: var(--white);
+    }
+    .btn--primary:hover { background: #1741B5; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(29,78,216,.35); }
+    .btn--outline {
+      background: transparent; color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.35);
+    }
+    .btn--outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); }
+    .btn--outline-dark {
+      background: transparent; color: var(--navy);
+      border: 1.5px solid var(--gray-200);
+    }
+    .btn--outline-dark:hover { border-color: var(--blue); color: var(--blue); }
+    .btn--teal { background: var(--teal); color: var(--white); }
+    .btn--teal:hover { background: #0A7C72; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(13,148,136,.35); }
+
+    /* ─── Arrow icon ─── */
+    .arrow { display: inline-block; transition: transform 0.2s; }
+    .btn:hover .arrow { transform: translateX(4px); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 0;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(10,22,40,0.96);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1160px; margin: 0 auto; padding: 0 24px;
+    }
+    .logo {
+      font-family: 'Sora', sans-serif; font-size: 1.375rem; font-weight: 700;
+      color: var(--white); letter-spacing: 0.04em;
+    }
+    .logo span { color: var(--teal-light); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.7);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); transition: var(--transition); border-radius: 2px; }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── Language switcher ─── */
+    .lang-switcher {
+      display: flex; align-items: center; gap: 2px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px; padding: 2px; margin-left: 8px;
+    }
+    .lang-btn {
+      background: transparent; border: none; cursor: pointer;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.45); padding: 5px 10px; border-radius: 4px;
+      transition: all 0.2s; font-family: 'Inter', sans-serif;
+    }
+    .lang-btn.active { background: rgba(255,255,255,0.15); color: var(--white); }
+    .lang-btn:hover:not(.active) { color: rgba(255,255,255,0.75); }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative; min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center;
+      overflow: hidden; padding-top: 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+    .hero-glow {
+      position: absolute; top: -10%; left: -5%;
+      width: 60vw; height: 70vh;
+      background: radial-gradient(ellipse, rgba(29,78,216,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-glow-teal {
+      position: absolute; bottom: -10%; right: -5%;
+      width: 50vw; height: 60vh;
+      background: radial-gradient(ellipse, rgba(13,148,136,0.14) 0%, transparent 65%);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+      max-width: 1160px; margin: 0 auto; padding: 0 24px;
+      width: 100%;
+    }
+    .hero-content { }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px; padding: 6px 16px; margin-bottom: 32px;
+      font-size: 0.8125rem; font-weight: 500; color: rgba(255,255,255,0.75);
+    }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--teal-light); border-radius: 50%; flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero-content h1 { color: var(--white); margin-bottom: 24px; }
+    .hero-content h1 em { font-style: normal; color: var(--teal-light); }
+    .hero-content p {
+      font-size: 1.125rem; color: rgba(255,255,255,0.62);
+      max-width: 520px; margin-bottom: 40px; line-height: 1.8;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    /* Abstract SVG ecosystem diagram */
+    .ecosystem-visual { width: 100%; max-width: 480px; }
+
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 56px; padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-stat-item { }
+    .hero-stat-value {
+      font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 700;
+      color: var(--white); line-height: 1;
+    }
+    .hero-stat-label { font-size: 0.8125rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { display: none; }
+    }
+
+    /* ─── PROBLEM ─── */
+    #problem { background: var(--white); }
+    .problem-intro { text-align: center; max-width: 680px; margin: 0 auto 72px; }
+    .problem-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .problem-card {
+      background: var(--gray-50);
+      padding: 40px 32px;
+      border-right: 1px solid var(--gray-200);
+      transition: background var(--transition);
+    }
+    .problem-card:last-child { border-right: none; }
+    .problem-card:hover { background: var(--white); }
+    .problem-icon {
+      width: 48px; height: 48px; margin-bottom: 20px;
+      color: var(--blue);
+    }
+    .problem-card h3 { font-size: 1.125rem; color: var(--black-soft); margin-bottom: 12px; }
+    .problem-card p { font-size: 0.9375rem; }
+    .problem-bottom {
+      margin-top: 64px; background: var(--navy);
+      border-radius: var(--radius-lg); padding: 56px 48px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .problem-bottom h2 { color: var(--white); font-size: clamp(1.5rem, 3vw, 2.2rem); }
+    .problem-bottom p { color: rgba(255,255,255,0.6); font-size: 1rem; }
+    .problem-stats { display: flex; flex-direction: column; gap: 24px; }
+    .problem-stat {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 20px; background: rgba(255,255,255,0.04);
+      border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.06);
+    }
+    .problem-stat-num {
+      font-family: 'Sora', sans-serif; font-size: 1.75rem; font-weight: 700;
+      color: var(--teal-light); line-height: 1; white-space: nowrap;
+    }
+    .problem-stat-text { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .problem-grid { grid-template-columns: 1fr; }
+      .problem-card { border-right: none; border-bottom: 1px solid var(--gray-200); }
+      .problem-bottom { grid-template-columns: 1fr; padding: 40px 28px; }
+    }
+
+    /* ─── SOLUTION ─── */
+    #solution {
+      background: var(--off-white);
+    }
+    .solution-intro { text-align: center; max-width: 640px; margin: 0 auto 72px; }
+    .solution-flow {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0; position: relative;
+    }
+    .solution-flow::before {
+      content: '';
+      position: absolute; top: 42px; left: 10%; right: 10%;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--gray-200) 20%, var(--gray-200) 80%, transparent);
+      z-index: 0;
+    }
+    .solution-step {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 0 16px; position: relative; z-index: 1;
+    }
+    .solution-step-icon {
+      width: 84px; height: 84px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; background: var(--white);
+      box-shadow: var(--shadow-md); border: 1px solid var(--gray-200);
+      color: var(--blue); transition: all var(--transition);
+    }
+    .solution-step:hover .solution-step-icon {
+      background: var(--blue); color: var(--white);
+      transform: translateY(-4px); box-shadow: var(--shadow-lg);
+    }
+    .solution-step h3 { font-size: 0.9375rem; color: var(--black-soft); margin-bottom: 8px; }
+    .solution-step p { font-size: 0.8125rem; }
+    .solution-platform {
+      margin-top: 72px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: var(--radius-lg); padding: 64px 48px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .solution-platform h2 { color: var(--white); margin-bottom: 20px; }
+    .solution-platform p { color: rgba(255,255,255,0.6); margin-bottom: 32px; }
+    .platform-features { display: flex; flex-direction: column; gap: 12px; }
+    .platform-feature {
+      display: flex; align-items: center; gap: 12px;
+      color: rgba(255,255,255,0.8); font-size: 0.9375rem;
+    }
+    .platform-feature-dot {
+      width: 8px; height: 8px; background: var(--teal-light);
+      border-radius: 50%; flex-shrink: 0;
+    }
+    .platform-visual {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .platform-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-md); padding: 20px;
+      transition: all var(--transition);
+    }
+    .platform-card:hover {
+      background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+    .platform-card-icon { font-size: 1.5rem; margin-bottom: 10px; }
+    .platform-card h4 { font-size: 0.875rem; color: var(--white); margin-bottom: 6px; letter-spacing: 0; text-transform: none; }
+    .platform-card p { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+    @media (max-width: 900px) {
+      .solution-flow { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .solution-flow::before { display: none; }
+      .solution-platform { grid-template-columns: 1fr; padding: 40px 28px; }
+    }
+    @media (max-width: 600px) {
+      .solution-flow { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─── ECOSYSTEM ─── */
+    #ecosystem { background: var(--white); }
+    .ecosystem-intro { max-width: 640px; margin-bottom: 64px; }
+    .ecosystem-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .eco-card {
+      padding: 40px 32px; position: relative; overflow: hidden;
+      border: 1px solid var(--gray-200); border-radius: 0;
+      transition: all var(--transition); background: var(--white);
+    }
+    .eco-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .eco-card:hover::before { transform: scaleX(1); }
+    .eco-card:hover { background: var(--gray-50); }
+    .eco-card-number {
+      font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700;
+      color: var(--gray-400); letter-spacing: 0.1em; margin-bottom: 20px;
+    }
+    .eco-icon {
+      width: 52px; height: 52px; border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; color: var(--white);
+    }
+    .eco-card h3 { font-size: 1.125rem; color: var(--black-soft); margin-bottom: 12px; }
+    .eco-card p { font-size: 0.9rem; }
+    .eco-tag {
+      display: inline-block; margin-top: 20px;
+      font-size: 0.75rem; font-weight: 600; color: var(--blue);
+      background: rgba(29,78,216,0.06); border-radius: 4px;
+      padding: 4px 10px; letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 900px) { .ecosystem-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .ecosystem-grid { grid-template-columns: 1fr; } }
+
+    /* ─── IMPACT ─── */
+    #impact {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%);
+      position: relative; overflow: hidden;
+    }
+    .impact-bg-circle {
+      position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.04);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+    .impact-bg-circle:nth-child(2) { width: 400px; height: 400px; }
+    .impact-bg-circle:nth-child(3) { width: 200px; height: 200px; }
+    .impact-intro { text-align: center; max-width: 640px; margin: 0 auto 72px; position: relative; z-index: 1; }
+    .impact-intro h2 { color: var(--white); }
+    .impact-pillars {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 2px; position: relative; z-index: 1;
+    }
+    .impact-pillar {
+      text-align: center; padding: 40px 24px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .impact-pillar:hover {
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-4px);
+    }
+    .impact-pillar-icon {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; color: var(--teal-light); font-size: 1.5rem;
+      transition: all var(--transition);
+    }
+    .impact-pillar:hover .impact-pillar-icon {
+      background: var(--teal); border-color: var(--teal); color: var(--white);
+    }
+    .impact-pillar h3 { font-size: 1rem; color: var(--white); margin-bottom: 12px; }
+    .impact-pillar p { font-size: 0.8375rem; }
+    .impact-metrics {
+      margin-top: 72px; position: relative; z-index: 1;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .impact-metric {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-md); padding: 32px;
+      text-align: center; transition: all var(--transition);
+    }
+    .impact-metric:hover { background: rgba(255,255,255,0.07); }
+    .impact-metric-value {
+      font-family: 'Sora', sans-serif; font-size: 0.875rem; font-weight: 600;
+      color: var(--teal-light); letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .impact-metric-label { font-size: 1rem; color: rgba(255,255,255,0.75); font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .impact-pillars { grid-template-columns: repeat(3, 1fr); }
+      .impact-metrics { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 580px) {
+      .impact-pillars { grid-template-columns: 1fr 1fr; }
+      .impact-metrics { grid-template-columns: 1fr; }
+    }
+
+    /* ─── TECHNOLOGY ─── */
+    #technology { background: var(--gray-100); }
+    .tech-intro { text-align: center; max-width: 640px; margin: 0 auto 72px; }
+    .tech-pillars {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+      margin-bottom: 48px;
+    }
+    .tech-pillar {
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 36px 32px; border: 1px solid var(--gray-200);
+      display: flex; gap: 24px; align-items: flex-start;
+      transition: all var(--transition);
+    }
+    .tech-pillar:hover { border-color: var(--blue); box-shadow: var(--shadow-md); }
+    .tech-pillar-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: rgba(29,78,216,0.07); border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue);
+    }
+    .tech-pillar h3 { font-size: 1.0625rem; color: var(--black-soft); margin-bottom: 8px; }
+    .tech-pillar p { font-size: 0.9rem; }
+    .tech-cta-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 24px; padding: 40px;
+      background: var(--white); border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+    }
+    .tech-cta-row p { color: var(--gray-700); font-size: 1rem; font-weight: 500; max-width: none; }
+
+    @media (max-width: 768px) {
+      .tech-pillars { grid-template-columns: 1fr; }
+      .tech-cta-row { flex-direction: column; text-align: center; }
+    }
+
+    /* ─── PARTNERS ─── */
+    #partners { background: var(--white); }
+    .partners-intro { max-width: 560px; margin-bottom: 64px; }
+    .partner-types {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .partner-type {
+      padding: 40px 28px; background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      transition: all var(--transition);
+    }
+    .partner-type:hover { background: var(--white); box-shadow: var(--shadow-md); position: relative; z-index: 1; }
+    .partner-type-icon {
+      width: 44px; height: 44px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; color: var(--navy); background: var(--gray-200);
+    }
+    .partner-type h3 { font-size: 1rem; color: var(--black-soft); margin-bottom: 10px; }
+    .partner-type p { font-size: 0.875rem; }
+    .partners-banner {
+      margin-top: 48px; background: var(--navy);
+      border-radius: var(--radius-lg); padding: 56px 48px;
+      display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+    }
+    .partners-banner h2 { color: var(--white); margin-bottom: 16px; }
+    .partners-banner p { color: rgba(255,255,255,0.6); max-width: 520px; }
+
+    @media (max-width: 900px) {
+      .partner-types { grid-template-columns: 1fr 1fr; }
+      .partners-banner { grid-template-columns: 1fr; padding: 40px 28px; }
+    }
+    @media (max-width: 580px) {
+      .partner-types { grid-template-columns: 1fr; }
+    }
+
+    /* ─── ABOUT / TEAM ─── */
+    #about { background: var(--off-white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 72px; align-items: start; }
+    .about-content h2 { margin-bottom: 20px; }
+    .about-content p { margin-bottom: 24px; }
+    .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .team-card {
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 28px; border: 1px solid var(--gray-200);
+      transition: all var(--transition);
+    }
+    .team-card:hover { box-shadow: var(--shadow-md); border-color: var(--gray-300); }
+    .team-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-weight: 700; font-size: 1.125rem;
+      margin-bottom: 16px; font-family: 'Sora', sans-serif;
+    }
+    .team-card h3 { font-size: 1.0625rem; color: var(--black-soft); margin-bottom: 4px; }
+    .team-card-role {
+      font-size: 0.8125rem; font-weight: 600; color: var(--teal);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;
+    }
+    .team-card p { font-size: 0.875rem; }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 580px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FINAL CTA ─── */
+    #cta {
+      background: linear-gradient(135deg, var(--navy) 0%, #0D1F3C 50%, var(--navy-mid) 100%);
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .cta-glow {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 80%; height: 200%; pointer-events: none;
+      background: radial-gradient(ellipse, rgba(13,148,136,0.12) 0%, transparent 60%);
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .cta-inner h2 { color: var(--white); font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 20px; }
+    .cta-inner p { color: rgba(255,255,255,0.6); font-size: 1.0625rem; margin-bottom: 40px; }
+    .cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 64px 0 32px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 56px;
+    }
+    .footer-brand p {
+      font-size: 0.9rem; color: rgba(255,255,255,0.5); margin-top: 16px;
+      max-width: 280px; line-height: 1.7;
+    }
+    .footer-contact {
+      margin-top: 20px; font-size: 0.875rem; color: rgba(255,255,255,0.4);
+    }
+    .footer-contact a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-contact a:hover { color: var(--white); }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul li a { font-size: 0.9rem; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 28px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: gap; gap: 16px;
+    }
+    .footer-bottom p { font-size: 0.8125rem; color: rgba(255,255,255,0.3); }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { font-size: 0.8125rem; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    .footer-legal a:hover { color: rgba(255,255,255,0.7); }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 580px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ─── Scroll animations ─── */
+    .fade-up {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-delay-1 { transition-delay: 0.1s; }
+    .fade-up-delay-2 { transition-delay: 0.2s; }
+    .fade-up-delay-3 { transition-delay: 0.3s; }
+    .fade-up-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── Misc ─── */
+    .divider {
+      height: 1px; background: var(--gray-200); margin: 0;
+    }
+    svg { display: block; }
+    .text-teal { color: var(--teal); }
+    .text-teal-light { color: var(--teal-light); }
+    .mb-0 { margin-bottom: 0; }
+
+    /* ─── Hero canvas particles ─── */
+    #hero-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 1; opacity: 0.55;
+    }
+
+    /* ─── Hero entrance animations ─── */
+    .hero-enter {
+      opacity: 0; transform: translateY(28px);
+    }
+    .hero-entered {
+      opacity: 1 !important; transform: translateY(0) !important;
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .hd-1 { transition-delay: 0.1s; }
+    .hd-2 { transition-delay: 0.28s; }
+    .hd-3 { transition-delay: 0.46s; }
+    .hd-4 { transition-delay: 0.62s; }
+    .hd-5 { transition-delay: 0.8s; }
+
+    /* ─── Hero visual float + SVG pulse ─── */
+    @keyframes hero-float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+    .ecosystem-visual { animation: hero-float 7s ease-in-out infinite; }
+
+    @keyframes ring-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes node-pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.55; }
+    }
+    .svg-ring-outer { transform-origin: 240px 240px; animation: ring-spin 32s linear infinite; }
+    .svg-node       { animation: node-pulse 3s ease-in-out infinite; }
+    .svg-node:nth-child(odd)  { animation-delay: 0.5s; }
+    .svg-node:nth-child(even) { animation-delay: 1.2s; }
+
+    /* ─── Hero grid fade-in on load ─── */
+    @keyframes grid-fade {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    .hero-grid { animation: grid-fade 1.8s ease forwards; }
+
+    /* ─── Hero Slider ─── */
+    .hero-content {
+      transition: opacity .45s cubic-bezier(.4,0,.2,1),
+                  transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .hero-content.sliding { opacity: 0; transform: translateY(14px); pointer-events: none; }
+    .slide-controls { display: flex; align-items: center; gap: 20px; margin-top: 36px; }
+    .slide-dots { display: flex; gap: 8px; }
+    .sdot {
+      width: 8px; height: 8px; border-radius: 4px;
+      background: rgba(255,255,255,.2); border: none; cursor: pointer;
+      transition: all .35s; padding: 0; flex-shrink: 0;
+    }
+    .sdot.active { background: var(--teal-light); width: 28px; }
+    .sdot:hover:not(.active) { background: rgba(255,255,255,.45); }
+    .slide-progress {
+      flex: 1; max-width: 90px; height: 2px;
+      background: rgba(255,255,255,.1); border-radius: 2px; overflow: hidden;
+    }
+    .slide-bar { height: 100%; background: var(--teal-light); border-radius: 2px; width: 0%; }
+  </style>
+
+  <!-- ─── Google Analytics ─────────────────────────────────────
+       Replace GA_MEASUREMENT_ID with your real G-XXXXXXXX id.
+       Remove these two lines if you prefer Plausible / Fathom.
+  ──────────────────────────────────────────────────────────── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">NTR<span>EPY</span>D</a>
+    <div class="nav-links">
+      <a href="#solution">Platform</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#impact">Impact</a>
+      <a href="#technology">Technology</a>
+      <a href="#partners">Partners</a>
+      <a href="#about">About</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#cta" class="btn btn--outline" id="nav-cta-btn" style="padding: 10px 22px; font-size: 0.875rem;">Partner with Us</a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
+      <button class="lang-btn" id="btn-es" onclick="setLanguage('es')">ES</button>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-teal"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge hero-enter hd-1">
+        <span class="hero-badge-dot"></span>
+        Inclusive Digital Infrastructure
+      </div>
+      <h1 class="hero-enter hd-2">Digital access to <em>essential services</em> for underserved communities.</h1>
+      <p class="hero-enter hd-3">NTREPYD enables vulnerable populations to access identity, financial, healthcare, education and daily services through one inclusive digital ecosystem — regardless of documentation status, language, or location.</p>
+      <div class="hero-actions hero-enter hd-4">
+        <a href="#ecosystem" class="btn btn--primary">Explore the Platform <span class="arrow">→</span></a>
+        <a href="#cta" class="btn btn--outline">Partner with NTREPYD</a>
+      </div>
+      <div class="hero-stats hero-enter hd-5">
+        <div class="hero-stat-item">
+          <div class="hero-stat-value">6</div>
+          <div class="hero-stat-label">Service Modules</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-value">Global</div>
+          <div class="hero-stat-label">Deployment Ready</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-value">1</div>
+          <div class="hero-stat-label">Unified Platform</div>
+        </div>
+      </div>
+      <div class="slide-controls hero-enter hd-5">
+        <div class="slide-dots">
+          <button class="sdot active" onclick="jumpSlide(0)"></button>
+          <button class="sdot" onclick="jumpSlide(1)"></button>
+          <button class="sdot" onclick="jumpSlide(2)"></button>
+        </div>
+        <div class="slide-progress"><div id="slide-bar" class="slide-bar"></div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Abstract ecosystem SVG -->
+      <svg class="ecosystem-visual" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#14B8A6" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#14B8A6" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="rg2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- Outer ring -->
+        <circle cx="240" cy="240" r="220" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <circle cx="240" cy="240" r="175" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <circle cx="240" cy="240" r="120" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <!-- Glow bg -->
+        <circle cx="240" cy="240" r="160" fill="url(#rg1)"/>
+        <circle cx="240" cy="240" r="100" fill="url(#rg2)"/>
+        <!-- Center hub -->
+        <circle cx="240" cy="240" r="42" fill="#0A1628" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+        <text x="240" y="236" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="11" fill="white" letter-spacing="2">NTR</text>
+        <text x="240" y="252" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="11" fill="#14B8A6" letter-spacing="2">EPYD</text>
+        <!-- Node positions: 6 nodes on circle r=175 -->
+        <!-- Node 1: Identity  top -->
+        <line x1="240" y1="198" x2="240" y2="120" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle cx="240" cy="72" r="34" class="svg-node" fill="#0F2044" stroke="rgba(20,184,166,0.5)" stroke-width="1.5"/>
+        <text x="240" y="68" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif">🪪</text>
+        <text x="240" y="84" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="Inter,sans-serif">Identity</text>
+        <!-- Node 2: Finance  top-right -->
+        <line x1="277" y1="216" x2="350" y2="140" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle cx="381" cy="115" r="34" class="svg-node" fill="#0F2044" stroke="rgba(59,130,246,0.5)" stroke-width="1.5"/>
+        <text x="381" y="111" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif">💳</text>
+        <text x="381" y="127" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="Inter,sans-serif">Finance</text>
+        <!-- Node 3: Health  bottom-right -->
+        <line x1="277" y1="265" x2="350" y2="342" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle cx="381" cy="368" r="34" class="svg-node" fill="#0F2044" stroke="rgba(20,184,166,0.5)" stroke-width="1.5"/>
+        <text x="381" y="364" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif">🏥</text>
+        <text x="381" y="380" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="Inter,sans-serif">Health</text>
+        <!-- Node 4: Education  bottom -->
+        <line x1="240" y1="282" x2="240" y2="362" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle cx="240" cy="410" r="34" class="svg-node" fill="#0F2044" stroke="rgba(59,130,246,0.5)" stroke-width="1.5"/>
+        <text x="240" y="406" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif">🎓</text>
+        <text x="240" y="422" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="Inter,sans-serif">Education</text>
+        <!-- Node 5: Services  bottom-left -->
+        <line x1="203" y1="265" x2="130" y2="342" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle cx="99" cy="368" r="34" class="svg-node" fill="#0F2044" stroke="rgba(20,184,166,0.5)" stroke-width="1.5"/>
+        <text x="99" y="364" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif">🌐</text>
+        <text x="99" y="380" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="Inter,sans-serif">Services</text>
+        <!-- Node 6: Community  top-left -->
+        <line x1="203" y1="216" x2="130" y2="140" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle cx="99" cy="115" r="34" class="svg-node" fill="#0F2044" stroke="rgba(59,130,246,0.5)" stroke-width="1.5"/>
+        <text x="99" y="111" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif">🤝</text>
+        <text x="99" y="127" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="Inter,sans-serif">Community</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PROBLEM ═══════════════════════ -->
+<section id="problem" class="section">
+  <div class="container">
+    <div class="problem-intro fade-up">
+      <span class="label">The Challenge</span>
+      <h2>Billions of people remain invisible to the systems meant to serve them.</h2>
+      <p>Lack of formal documentation, language barriers, financial exclusion and bureaucratic complexity leave millions without access to the services that others take for granted.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card fade-up">
+        <svg class="problem-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="10" y="14" width="28" height="20" rx="3"/>
+          <path d="M18 26a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+          <path d="M30 22h4M30 26h4"/>
+        </svg>
+        <h3>Documentation Barriers</h3>
+        <p>Hundreds of millions of people lack formal identification required to access financial services, healthcare and social benefits. Without an ID, they simply don't exist to the system.</p>
+      </div>
+      <div class="problem-card fade-up fade-up-delay-1">
+        <svg class="problem-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 10v4M24 34v4M10 24h4M34 24h4"/>
+          <circle cx="24" cy="24" r="8"/>
+          <path d="M16 16l2.8 2.8M29.2 29.2L32 32M32 16l-2.8 2.8M18.8 29.2L16 32"/>
+        </svg>
+        <h3>Financial Exclusion</h3>
+        <p>Over 1.4 billion adults globally are unbanked. They cannot save securely, receive payments, access credit or build financial history — trapping them in cycles of economic vulnerability.</p>
+      </div>
+      <div class="problem-card fade-up fade-up-delay-2">
+        <svg class="problem-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 36 C12 28 36 28 36 36"/>
+          <circle cx="24" cy="18" r="7"/>
+          <path d="M6 38h36"/>
+        </svg>
+        <h3>Systemic Invisibility</h3>
+        <p>Migrants, refugees, and marginalized communities are often unknown to institutions that could help them. Language, geography, and distrust of formal systems compound their exclusion.</p>
+      </div>
+    </div>
+    <div class="problem-bottom fade-up">
+      <div>
+        <h2>The global scale of this challenge demands a new kind of infrastructure.</h2>
+        <p style="color:rgba(255,255,255,0.6); margin-top:16px;">Traditional services were built for documented, banked, and connected populations. NTREPYD was built for everyone else.</p>
+      </div>
+      <div class="problem-stats">
+        <div class="problem-stat">
+          <div class="problem-stat-num">1.4B+</div>
+          <div class="problem-stat-text">Adults globally without access to a bank account</div>
+        </div>
+        <div class="problem-stat">
+          <div class="problem-stat-num">1B+</div>
+          <div class="problem-stat-text">People living without legal proof of identity</div>
+        </div>
+        <div class="problem-stat">
+          <div class="problem-stat-num">280M+</div>
+          <div class="problem-stat-text">International migrants navigating broken systems</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SOLUTION ═══════════════════════ -->
+<section id="solution" class="section">
+  <div class="container">
+    <div class="solution-intro fade-up">
+      <span class="label">Our Approach</span>
+      <h2>One platform. One identity. Access to everything that matters.</h2>
+      <p>NTREPYD creates a seamless bridge between underserved populations and the institutions, services and opportunities they need — starting from a single, secure digital identity.</p>
+    </div>
+    <div class="solution-flow">
+      <div class="solution-step fade-up">
+        <div class="solution-step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="8" width="18" height="13" rx="2"/>
+            <path d="M10 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+            <path d="M16 13h5M16 17h3"/>
+          </svg>
+        </div>
+        <h3>Digital Identity</h3>
+        <p>Secure, verifiable and portable</p>
+      </div>
+      <div class="solution-step fade-up fade-up-delay-1">
+        <div class="solution-step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="8" width="18" height="14" rx="2"/>
+            <path d="M9 12h10M9 16h6"/>
+            <circle cx="20" cy="20" r="4" fill="white" stroke="currentColor"/>
+            <path d="M20 18v2l1 1"/>
+          </svg>
+        </div>
+        <h3>Financial Access</h3>
+        <p>Payments, savings and credit</p>
+      </div>
+      <div class="solution-step fade-up fade-up-delay-2">
+        <div class="solution-step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 6a4 4 0 0 1 4 4c0 2.5-4 8-4 8s-4-5.5-4-8a4 4 0 0 1 4-4z"/>
+            <circle cx="14" cy="10" r="1.5"/>
+            <path d="M8 22h16l-2-4H10l-2 4z"/>
+          </svg>
+        </div>
+        <h3>Healthcare</h3>
+        <p>Telemedicine & medicine access</p>
+      </div>
+      <div class="solution-step fade-up fade-up-delay-3">
+        <div class="solution-step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 22V10l8-4 8 4v12"/>
+            <rect x="11" y="15" width="6" height="7"/>
+            <rect x="8" y="12" width="4" height="3"/>
+            <rect x="16" y="12" width="4" height="3"/>
+          </svg>
+        </div>
+        <h3>Education</h3>
+        <p>Upskilling & opportunities</p>
+      </div>
+      <div class="solution-step fade-up fade-up-delay-4">
+        <div class="solution-step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="14" cy="14" r="9"/>
+            <path d="M14 5v18M5 14h18"/>
+            <path d="M7 8c2 2 4 3 7 3s5-1 7-3M7 20c2-2 4-3 7-3s5 1 7 3"/>
+          </svg>
+        </div>
+        <h3>Essential Services</h3>
+        <p>Community & daily life needs</p>
+      </div>
+    </div>
+    <div class="solution-platform fade-up">
+      <div>
+        <h2>Built to work where traditional systems don't reach.</h2>
+        <p>NTREPYD is designed from the ground up for populations that existing platforms overlook. Our approach is simple: meet people where they are, and connect them to what they need.</p>
+        <div class="platform-features">
+          <div class="platform-feature"><span class="platform-feature-dot"></span>Works without prior banking or credit history</div>
+          <div class="platform-feature"><span class="platform-feature-dot"></span>Accessible in multiple languages and low-connectivity environments</div>
+          <div class="platform-feature"><span class="platform-feature-dot"></span>Biometric-enabled onboarding with no paperwork required</div>
+          <div class="platform-feature"><span class="platform-feature-dot"></span>Designed for institutional and government deployment</div>
+          <div class="platform-feature"><span class="platform-feature-dot"></span>Privacy-first, compliant with international data standards</div>
+        </div>
+        <div style="margin-top: 32px;">
+          <a href="#ecosystem" class="btn btn--teal">Explore All Modules <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="platform-visual">
+        <div class="platform-card">
+          <div class="platform-card-icon">🔐</div>
+          <h4>Secure by design</h4>
+          <p>Privacy-first identity layer with enterprise-grade protection</p>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-icon">⚡</div>
+          <h4>Instant access</h4>
+          <p>Real-time service delivery with near-zero transaction costs</p>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-icon">🌍</div>
+          <h4>Global scale</h4>
+          <p>Interoperable infrastructure designed for worldwide deployment</p>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-icon">🏛️</div>
+          <h4>Institutional grade</h4>
+          <p>Built for compliance with governments and regulated industries</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ ECOSYSTEM ═══════════════════════ -->
+<section id="ecosystem" class="section">
+  <div class="container">
+    <div class="ecosystem-intro fade-up">
+      <span class="label">Platform Modules</span>
+      <h2>A complete ecosystem of services within a single platform.</h2>
+      <p>Every module is built to work standalone or together — giving institutions the flexibility to deploy what their communities need most.</p>
+    </div>
+    <div class="ecosystem-grid">
+      <div class="eco-card fade-up">
+        <div class="eco-card-number">01</div>
+        <div class="eco-icon" style="background: linear-gradient(135deg, #1D4ED8, #3B82F6);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="6" width="18" height="13" rx="2"/>
+            <path d="M8 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+            <path d="M14 10h5M14 14h3"/>
+          </svg>
+        </div>
+        <h3>Digital Identity</h3>
+        <p>A secure, biometric-enabled digital identity that people can own and carry with them. No formal documents required to get started. Works across all NTREPYD services and partner networks.</p>
+        <span class="eco-tag">Identity Layer</span>
+      </div>
+      <div class="eco-card fade-up fade-up-delay-1">
+        <div class="eco-card-number">02</div>
+        <div class="eco-icon" style="background: linear-gradient(135deg, #0D9488, #14B8A6);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="6" width="18" height="14" rx="2"/>
+            <path d="M7 10h10M7 14h6"/>
+            <path d="M14 17a3 3 0 1 0 6 0 3 3 0 0 0-6 0"/>
+            <path d="M17 16v1l.5.5"/>
+          </svg>
+        </div>
+        <h3>Financial Services</h3>
+        <p>Cross-border payments, domestic transfers, micro-savings, microcredit and insurance — all accessible without a traditional bank account. Built for low-income and unbanked populations.</p>
+        <span class="eco-tag">FinTech Module</span>
+      </div>
+      <div class="eco-card fade-up fade-up-delay-2">
+        <div class="eco-card-number">03</div>
+        <div class="eco-icon" style="background: linear-gradient(135deg, #DC2626, #EF4444);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <h3>Healthcare Access</h3>
+        <p>Telemedicine consultations, medicine access via microcredit, health records and referrals to local providers. Healthcare that works even in underserved or remote areas.</p>
+        <span class="eco-tag">Health Module</span>
+      </div>
+      <div class="eco-card fade-up">
+        <div class="eco-card-number">04</div>
+        <div class="eco-icon" style="background: linear-gradient(135deg, #7C3AED, #8B5CF6);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-7 10 7"/>
+            <path d="M6 10v10h12V10"/>
+            <rect x="9" y="14" width="6" height="6"/>
+          </svg>
+        </div>
+        <h3>Upskilling & Opportunities</h3>
+        <p>Skills validation, certified training, job matching and pathways to formal employment. Empowering individuals to improve their economic situation and contribute to their communities.</p>
+        <span class="eco-tag">Education Module</span>
+      </div>
+      <div class="eco-card fade-up fade-up-delay-1">
+        <div class="eco-card-number">05</div>
+        <div class="eco-icon" style="background: linear-gradient(135deg, #D97706, #F59E0B);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Community Engagement</h3>
+        <p>Social tools that strengthen community networks, facilitate peer support, and enable trusted local leaders to serve as bridges between residents and institutional resources.</p>
+        <span class="eco-tag">Community Module</span>
+      </div>
+      <div class="eco-card fade-up fade-up-delay-2">
+        <div class="eco-card-number">06</div>
+        <div class="eco-icon" style="background: linear-gradient(135deg, #0369A1, #0EA5E9);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>
+          </svg>
+        </div>
+        <h3>Partner Services</h3>
+        <p>An open service layer that allows governments, NGOs, retailers and other partners to extend the platform's reach — bringing their services directly to NTREPYD users through a trusted channel.</p>
+        <span class="eco-tag">Partner API</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ IMPACT ═══════════════════════ -->
+<section id="impact" class="section section--dark">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="impact-bg-circle"></div>
+    <div class="impact-bg-circle"></div>
+    <div class="impact-bg-circle"></div>
+  </div>
+  <div class="container">
+    <div class="impact-intro fade-up">
+      <span class="label label--light">Our Impact Framework</span>
+      <h2>Measuring success by lives changed, not just transactions processed.</h2>
+      <p>NTREPYD's mission is fundamentally human. Every metric we track maps to a real person gaining access to something that changes their life.</p>
+    </div>
+    <div class="impact-pillars">
+      <div class="impact-pillar fade-up">
+        <div class="impact-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+          </svg>
+        </div>
+        <h3>Inclusion</h3>
+        <p>Bringing previously excluded populations into economic and social participation — on equal terms.</p>
+      </div>
+      <div class="impact-pillar fade-up fade-up-delay-1">
+        <div class="impact-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Trust</h3>
+        <p>Building trustworthy infrastructure that institutions can rely on and communities can believe in.</p>
+      </div>
+      <div class="impact-pillar fade-up fade-up-delay-2">
+        <div class="impact-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v8M8 12h8"/>
+          </svg>
+        </div>
+        <h3>Access</h3>
+        <p>Unlocking services that should be universal — healthcare, finance, education — for everyone, everywhere.</p>
+      </div>
+      <div class="impact-pillar fade-up fade-up-delay-3">
+        <div class="impact-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3>Empowerment</h3>
+        <p>Giving individuals the tools to build financial resilience, improve skills and shape their own futures.</p>
+      </div>
+      <div class="impact-pillar fade-up fade-up-delay-4">
+        <div class="impact-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Institutional Reach</h3>
+        <p>Enabling governments and organizations to extend their mandate to the populations most in need.</p>
+      </div>
+    </div>
+    <div class="impact-metrics fade-up">
+      <div class="impact-metric">
+        <div class="impact-metric-value">Designed for global scale</div>
+        <div class="impact-metric-label">Infrastructure deployable across regions, languages and regulatory environments</div>
+      </div>
+      <div class="impact-metric">
+        <div class="impact-metric-value">Built for underserved communities</div>
+        <div class="impact-metric-label">Every product decision centers the needs of vulnerable and excluded populations</div>
+      </div>
+      <div class="impact-metric">
+        <div class="impact-metric-value">Connecting people, institutions & services</div>
+        <div class="impact-metric-label">A bridge between the world's most vulnerable populations and the systems that can serve them</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TECHNOLOGY ═══════════════════════ -->
+<section id="technology" class="section section--gray">
+  <div class="container">
+    <div class="tech-intro fade-up">
+      <span class="label">Infrastructure</span>
+      <h2>Technology built for trust, security and scale.</h2>
+      <p>We don't lead with technology — we lead with mission. But the infrastructure behind NTREPYD is designed to the highest institutional standards, ensuring that every service is secure, reliable and ready for global deployment.</p>
+    </div>
+    <div class="tech-pillars">
+      <div class="tech-pillar fade-up">
+        <div class="tech-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Secure Digital Infrastructure</h3>
+          <p>Enterprise-grade security with advanced encryption and biometric authentication. Built to comply with international data protection standards and trusted by regulated institutions.</p>
+        </div>
+      </div>
+      <div class="tech-pillar fade-up fade-up-delay-1">
+        <div class="tech-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Scalable Service Ecosystem</h3>
+          <p>Architected to handle high transaction volumes across distributed networks — from a single community pilot to country-wide deployments — without sacrificing speed or reliability.</p>
+        </div>
+      </div>
+      <div class="tech-pillar fade-up fade-up-delay-2">
+        <div class="tech-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Interoperable Platform</h3>
+          <p>Open architecture that connects seamlessly with government databases, financial institutions, health systems and third-party service providers through standard APIs and protocols.</p>
+        </div>
+      </div>
+      <div class="tech-pillar fade-up fade-up-delay-3">
+        <div class="tech-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Privacy-First Identity Layer</h3>
+          <p>Users own and control their identity data. Selective disclosure allows individuals to prove attributes without sharing unnecessary personal information — enabling access while preserving dignity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tech-cta-row fade-up">
+      <p>Interested in NTREPYD's technical architecture and compliance framework?</p>
+      <a href="#cta" class="btn btn--outline-dark">View Technology Overview <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PARTNERS ═══════════════════════ -->
+<section id="partners" class="section">
+  <div class="container">
+    <div class="partners-intro fade-up">
+      <span class="label">For Institutions & Partners</span>
+      <h2>NTREPYD helps institutions reach the people they've been unable to serve.</h2>
+      <p>Whether you're a government agency, international NGO, financial institution, healthcare provider or technology company — NTREPYD gives you the infrastructure to extend your reach to populations that traditional systems leave behind.</p>
+    </div>
+    <div class="partner-types">
+      <div class="partner-type fade-up">
+        <div class="partner-type-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 2 L2 7 v10 l9 5 9-5 V7 Z"/>
+            <path d="M11 2v18M2 7l9 5 9-5"/>
+          </svg>
+        </div>
+        <h3>Governments & Public Sector</h3>
+        <p>Deploy national digital identity programs, streamline benefit delivery and extend public services to undocumented and marginalized citizens with full compliance and security.</p>
+      </div>
+      <div class="partner-type fade-up fade-up-delay-1">
+        <div class="partner-type-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="7" r="4"/>
+            <path d="M3 19v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/>
+          </svg>
+        </div>
+        <h3>NGOs & Development Organizations</h3>
+        <p>Integrate humanitarian aid, financial support and social programs through a single, trusted platform that communities can access on their own terms — with or without prior documentation.</p>
+      </div>
+      <div class="partner-type fade-up fade-up-delay-2">
+        <div class="partner-type-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="5" width="18" height="14" rx="2"/>
+            <path d="M2 9h18M6 14h2M10 14h6"/>
+          </svg>
+        </div>
+        <h3>Financial Institutions</h3>
+        <p>Expand your customer base to the unbanked and underbanked. NTREPYD provides the identity layer and trust framework you need to serve new markets compliantly and profitably.</p>
+      </div>
+      <div class="partner-type fade-up">
+        <div class="partner-type-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 11.08V12a9 9 0 1 1-5.35-8.22"/>
+            <polyline points="20 2 12 10 9 7"/>
+          </svg>
+        </div>
+        <h3>Healthcare Providers</h3>
+        <p>Deliver telemedicine and preventive care to underserved patients. Integrate seamlessly with NTREPYD's health module to reach patients who have never had access to formal healthcare.</p>
+      </div>
+      <div class="partner-type fade-up fade-up-delay-1">
+        <div class="partner-type-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="18" height="15" rx="2"/>
+            <path d="M7 8h.01M11 8h4M7 12h4M11 12h4M7 16h.01M11 16h.01M15 16h.01"/>
+          </svg>
+        </div>
+        <h3>Education & Training Providers</h3>
+        <p>Connect your programs to communities with real skills gaps. NTREPYD's upskilling module bridges formal education providers with populations who need recognized credentials to advance.</p>
+      </div>
+      <div class="partner-type fade-up fade-up-delay-2">
+        <div class="partner-type-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="9"/>
+            <path d="M11 2v18M2 11h18"/>
+            <path d="M4.5 5.5c2 2 4 3 6.5 3s4.5-1 6.5-3M4.5 16.5c2-2 4-3 6.5-3s4.5 1 6.5 3"/>
+          </svg>
+        </div>
+        <h3>Technology & Service Partners</h3>
+        <p>Build on top of NTREPYD's open platform. Extend the ecosystem with new services, integrations and applications — reaching an audience that no other distribution channel can provide.</p>
+      </div>
+    </div>
+    <div class="partners-banner fade-up">
+      <div>
+        <h2>"Often invisible to traditional systems — always visible to us."</h2>
+        <p>NTREPYD was purpose-built to close the gap between what institutions can offer and what underserved populations actually receive. Let's build that bridge together.</p>
+      </div>
+      <div style="flex-shrink: 0;">
+        <a href="#cta" class="btn btn--primary">Start a Conversation <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ ABOUT / TEAM ═══════════════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content fade-up">
+        <span class="label">Leadership</span>
+        <h2>A team with the experience to deliver at scale.</h2>
+        <p>NTREPYD was founded by leaders from the worlds of technology, finance, social innovation and digital infrastructure — united by a common belief that the digital economy should work for everyone.</p>
+        <p>Our founders bring experience from some of the world's most demanding environments — including major global corporations, international development contexts and frontier technology platforms.</p>
+        <a href="mailto:contact@ntrepyd.com" class="btn btn--outline-dark" style="margin-top:8px;">Contact the Team</a>
+      </div>
+      <div class="team-grid">
+        <div class="team-card fade-up">
+          <div class="team-avatar">DB</div>
+          <h3>Daniel Bay</h3>
+          <div class="team-card-role">Chief Executive Officer</div>
+          <p>Former executive at Amazon, Netflix and Nike. Deep expertise in global platform scaling, institutional partnerships and enterprise technology deployment.</p>
+        </div>
+        <div class="team-card fade-up fade-up-delay-1">
+          <div class="team-avatar">JV</div>
+          <h3>José Vaisman</h3>
+          <div class="team-card-role">Chief Technology Officer</div>
+          <p>FinTech and AI specialist with a track record of building secure, high-performance digital financial infrastructure for emerging and regulated markets.</p>
+        </div>
+        <div class="team-card fade-up fade-up-delay-2">
+          <div class="team-avatar">YL</div>
+          <h3>Yao Liu</h3>
+          <div class="team-card-role">Chief Platform Officer</div>
+          <p>Platform monetization and digital ecosystem expert. Focused on building sustainable business models that align revenue with social impact and long-term mission.</p>
+        </div>
+        <div class="team-card fade-up fade-up-delay-3">
+          <div class="team-avatar">MP</div>
+          <h3>Miguel Papic</h3>
+          <div class="team-card-role">Chief Strategy Officer</div>
+          <p>Social-tech entrepreneur and strategist with experience building mission-driven initiatives across Latin America and developing markets at a regional scale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FINAL CTA ═══════════════════════ -->
+<section id="cta" class="section">
+  <div class="container">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="cta-inner fade-up" style="background: linear-gradient(160deg, #0A1628 0%, #0F2044 100%); border-radius: 24px; padding: 80px 40px; max-width: 100%; position: relative; overflow: hidden;">
+      <div style="position:absolute; top:-60px; right:-60px; width:300px; height:300px; background: radial-gradient(circle, rgba(13,148,136,0.15) 0%, transparent 70%); pointer-events:none;"></div>
+      <div style="position:absolute; bottom:-40px; left:-40px; width:250px; height:250px; background: radial-gradient(circle, rgba(29,78,216,0.12) 0%, transparent 70%); pointer-events:none;"></div>
+      <div style="position:relative; z-index:1; text-align:center; max-width:640px; margin:0 auto;">
+        <span class="label label--light" style="justify-content:center;">Get Involved</span>
+        <h2 style="color:white; font-size:clamp(2rem, 4vw, 3rem); margin-bottom:20px;">Build a more inclusive digital future.</h2>
+        <p style="color:rgba(255,255,255,0.6); font-size:1.0625rem; margin-bottom:40px;">Whether you're an investor, government partner, NGO, healthcare provider or technology organization — NTREPYD is ready to work with you.</p>
+        <!-- ─── Contact Form (Formspree)
+             Replace YOUR_FORM_ID with the id from formspree.io/forms
+             e.g. action="https://formspree.io/f/xkgwqrpz"
+        ─────────────────────────────────────────────── -->
+        <form id="contact-form"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+              style="display:grid; gap:12px; margin-bottom:32px; text-align:left;"
+              onsubmit="handleFormSubmit(event)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <input type="text"  name="name"         placeholder="Your name *" required
+              style="padding:13px 16px; border-radius:8px; border:1.5px solid rgba(255,255,255,.15); background:rgba(255,255,255,.07); color:#fff; font-size:.9375rem; font-family:inherit; outline:none; transition:border-color .2s;"
+              onfocus="this.style.borderColor='#14B8A6'" onblur="this.style.borderColor='rgba(255,255,255,.15)'" />
+            <input type="email" name="email"        placeholder="Work e-mail *" required
+              style="padding:13px 16px; border-radius:8px; border:1.5px solid rgba(255,255,255,.15); background:rgba(255,255,255,.07); color:#fff; font-size:.9375rem; font-family:inherit; outline:none; transition:border-color .2s;"
+              onfocus="this.style.borderColor='#14B8A6'" onblur="this.style.borderColor='rgba(255,255,255,.15)'" />
+          </div>
+          <select name="type"
+            style="padding:13px 16px; border-radius:8px; border:1.5px solid rgba(255,255,255,.15); background:rgba(255,255,255,.07); color:rgba(255,255,255,.75); font-size:.9375rem; font-family:inherit; outline:none; cursor:pointer;">
+            <option value="">Type of inquiry</option>
+            <option value="investment">Investment / Funding</option>
+            <option value="government">Government Partnership</option>
+            <option value="ngo">NGO / Civil Society</option>
+            <option value="tech">Technology Partner</option>
+            <option value="healthcare">Healthcare Provider</option>
+            <option value="other">Other</option>
+          </select>
+          <textarea name="message" rows="3" placeholder="Brief message…"
+            style="padding:13px 16px; border-radius:8px; border:1.5px solid rgba(255,255,255,.15); background:rgba(255,255,255,.07); color:#fff; font-size:.9375rem; font-family:inherit; outline:none; resize:vertical; transition:border-color .2s;"
+            onfocus="this.style.borderColor='#14B8A6'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"></textarea>
+          <input type="hidden" name="_subject" value="New NTREPYD Partnership Inquiry" />
+          <div style="text-align:center;">
+            <button type="submit" class="btn btn--teal" id="form-submit-btn">
+              Send Message <span class="arrow">→</span>
+            </button>
+          </div>
+          <div id="form-success" style="display:none; color:#14B8A6; font-size:.9rem; text-align:center; padding:10px;">
+            ✓ Message sent — we'll be in touch within 2 business days.
+          </div>
+          <div id="form-error" style="display:none; color:#F87171; font-size:.9rem; text-align:center; padding:10px;">
+            Something went wrong. Please e-mail us directly at contact@ntrepyd.com
+          </div>
+        </form>
+        <p style="font-size:0.8125rem; color:rgba(255,255,255,0.3); margin-top:8px; margin-bottom:0;">Washington, DC · contact@ntrepyd.com · +1 240 201 4176</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="font-size:1.25rem;">NTR<span>EPY</span>D</a>
+        <p>An inclusive digital platform enabling vulnerable populations to access identity, financial, healthcare, education and essential services worldwide.</p>
+        <div class="footer-contact">
+          <div style="margin-bottom:6px;"><a href="mailto:contact@ntrepyd.com">contact@ntrepyd.com</a></div>
+          <div><a href="tel:+12402014176">+1 240 201 4176</a></div>
+          <div style="margin-top:6px;">Washington, DC</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#solution">Overview</a></li>
+          <li><a href="#ecosystem">Digital Identity</a></li>
+          <li><a href="#ecosystem">Financial Services</a></li>
+          <li><a href="#ecosystem">Healthcare</a></li>
+          <li><a href="#ecosystem">Upskilling</a></li>
+          <li><a href="#ecosystem">Partner Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Organization</h4>
+        <ul>
+          <li><a href="#about">About NTREPYD</a></li>
+          <li><a href="#about">Leadership</a></li>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="#technology">Technology</a></li>
+          <li><a href="#partners">Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#cta">Contact Us</a></li>
+          <li><a href="#cta">Start a Partnership</a></li>
+          <li><a href="mailto:contact@ntrepyd.com">Email</a></li>
+          <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+          <li><a href="#" aria-label="Twitter / X">Twitter / X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 NTREPYD. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Translations ── */
+  const T = {
+    en: {
+      nav_platform:'Platform',nav_ecosystem:'Ecosystem',nav_impact:'Impact',
+      nav_technology:'Technology',nav_partners:'Partners',nav_about:'About',
+      nav_cta:'Partner with Us',
+      hero_badge:'Inclusive Digital Infrastructure',
+      hero_h1:'Digital access to <em>essential services</em> for underserved communities.',
+      hero_p:'NTREPYD enables vulnerable populations to access identity, financial, healthcare, education and daily services through one inclusive digital ecosystem — regardless of documentation status, language, or location.',
+      hero_cta1:'Explore the Platform',hero_cta2:'Partner with NTREPYD',
+      stat1:'Service Modules',stat2:'Deployment Ready',stat3:'Unified Platform',
+      prob_label:'The Challenge',
+      prob_h2:'Billions of people remain invisible to the systems meant to serve them.',
+      prob_p:'Lack of formal documentation, language barriers, financial exclusion and bureaucratic complexity leave millions without access to the services that others take for granted.',
+      prob_c1_h3:'Documentation Barriers',
+      prob_c1_p:'Hundreds of millions of people lack formal identification required to access financial services, healthcare and social benefits. Without an ID, they simply don\'t exist to the system.',
+      prob_c2_h3:'Financial Exclusion',
+      prob_c2_p:'Over 1.4 billion adults globally are unbanked. They cannot save securely, receive payments, access credit or build financial history — trapping them in cycles of economic vulnerability.',
+      prob_c3_h3:'Systemic Invisibility',
+      prob_c3_p:'Migrants, refugees, and marginalized communities are often unknown to institutions that could help them. Language, geography, and distrust of formal systems compound their exclusion.',
+      prob_bot_h2:'The global scale of this challenge demands a new kind of infrastructure.',
+      prob_bot_p:'Traditional services were built for documented, banked, and connected populations. NTREPYD was built for everyone else.',
+      prob_stat1:'Adults globally without access to a bank account',
+      prob_stat2:'People living without legal proof of identity',
+      prob_stat3:'International migrants navigating broken systems',
+      sol_label:'Our Approach',
+      sol_h2:'One platform. One identity. Access to everything that matters.',
+      sol_p:'NTREPYD creates a seamless bridge between underserved populations and the institutions, services and opportunities they need — starting from a single, secure digital identity.',
+      sol_s1_h3:'Digital Identity',sol_s1_p:'Secure, verifiable and portable',
+      sol_s2_h3:'Financial Access',sol_s2_p:'Payments, savings and credit',
+      sol_s3_h3:'Healthcare',sol_s3_p:'Telemedicine & medicine access',
+      sol_s4_h3:'Education',sol_s4_p:'Upskilling & opportunities',
+      sol_s5_h3:'Essential Services',sol_s5_p:'Community & daily life needs',
+      sol_plat_h2:'Built to work where traditional systems don\'t reach.',
+      sol_plat_p:'NTREPYD is designed from the ground up for populations that existing platforms overlook. Our approach is simple: meet people where they are, and connect them to what they need.',
+      sol_f1:'Works without prior banking or credit history',
+      sol_f2:'Accessible in multiple languages and low-connectivity environments',
+      sol_f3:'Biometric-enabled onboarding with no paperwork required',
+      sol_f4:'Designed for institutional and government deployment',
+      sol_f5:'Privacy-first, compliant with international data standards',
+      sol_cta:'Explore All Modules',
+      plat_c1_h4:'Secure by design',plat_c1_p:'Privacy-first identity layer with enterprise-grade protection',
+      plat_c2_h4:'Instant access',plat_c2_p:'Real-time service delivery with near-zero transaction costs',
+      plat_c3_h4:'Global scale',plat_c3_p:'Interoperable infrastructure designed for worldwide deployment',
+      plat_c4_h4:'Institutional grade',plat_c4_p:'Built for compliance with governments and regulated industries',
+      eco_label:'Platform Modules',
+      eco_h2:'A complete ecosystem of services within a single platform.',
+      eco_p:'Every module is built to work standalone or together — giving institutions the flexibility to deploy what their communities need most.',
+      eco1_h3:'Digital Identity',eco1_p:'A secure, biometric-enabled digital identity that people can own and carry with them. No formal documents required to get started. Works across all NTREPYD services and partner networks.',eco1_tag:'Identity Layer',
+      eco2_h3:'Financial Services',eco2_p:'Cross-border payments, domestic transfers, micro-savings, microcredit and insurance — all accessible without a traditional bank account. Built for low-income and unbanked populations.',eco2_tag:'FinTech Module',
+      eco3_h3:'Healthcare Access',eco3_p:'Telemedicine consultations, medicine access via microcredit, health records and referrals to local providers. Healthcare that works even in underserved or remote areas.',eco3_tag:'Health Module',
+      eco4_h3:'Upskilling & Opportunities',eco4_p:'Skills validation, certified training, job matching and pathways to formal employment. Empowering individuals to improve their economic situation and contribute to their communities.',eco4_tag:'Education Module',
+      eco5_h3:'Community Engagement',eco5_p:'Social tools that strengthen community networks, facilitate peer support, and enable trusted local leaders to serve as bridges between residents and institutional resources.',eco5_tag:'Community Module',
+      eco6_h3:'Partner Services',eco6_p:'An open service layer that allows governments, NGOs, retailers and other partners to extend the platform\'s reach — bringing their services directly to NTREPYD users through a trusted channel.',eco6_tag:'Partner API',
+      imp_label:'Our Impact Framework',
+      imp_h2:'Measuring success by lives changed, not just transactions processed.',
+      imp_p:'NTREPYD\'s mission is fundamentally human. Every metric we track maps to a real person gaining access to something that changes their life.',
+      imp_p1_h3:'Inclusion',imp_p1_p:'Bringing previously excluded populations into economic and social participation — on equal terms.',
+      imp_p2_h3:'Trust',imp_p2_p:'Building trustworthy infrastructure that institutions can rely on and communities can believe in.',
+      imp_p3_h3:'Access',imp_p3_p:'Unlocking services that should be universal — healthcare, finance, education — for everyone, everywhere.',
+      imp_p4_h3:'Empowerment',imp_p4_p:'Giving individuals the tools to build financial resilience, improve skills and shape their own futures.',
+      imp_p5_h3:'Institutional Reach',imp_p5_p:'Enabling governments and organizations to extend their mandate to the populations most in need.',
+      imp_m1_val:'Designed for global scale',imp_m1_lbl:'Infrastructure deployable across regions, languages and regulatory environments',
+      imp_m2_val:'Built for underserved communities',imp_m2_lbl:'Every product decision centers the needs of vulnerable and excluded populations',
+      imp_m3_val:'Connecting people, institutions & services',imp_m3_lbl:'A bridge between the world\'s most vulnerable populations and the systems that can serve them',
+      tech_label:'Infrastructure',
+      tech_h2:'Technology built for trust, security and scale.',
+      tech_p:'We don\'t lead with technology — we lead with mission. But the infrastructure behind NTREPYD is designed to the highest institutional standards, ensuring that every service is secure, reliable and ready for global deployment.',
+      tech_p1_h3:'Secure Digital Infrastructure',tech_p1_p:'Enterprise-grade security with advanced encryption and biometric authentication. Built to comply with international data protection standards and trusted by regulated institutions.',
+      tech_p2_h3:'Scalable Service Ecosystem',tech_p2_p:'Architected to handle high transaction volumes across distributed networks — from a single community pilot to country-wide deployments — without sacrificing speed or reliability.',
+      tech_p3_h3:'Interoperable Platform',tech_p3_p:'Open architecture that connects seamlessly with government databases, financial institutions, health systems and third-party service providers through standard APIs and protocols.',
+      tech_p4_h3:'Privacy-First Identity Layer',tech_p4_p:'Users own and control their identity data. Selective disclosure allows individuals to prove attributes without sharing unnecessary personal information — enabling access while preserving dignity.',
+      tech_cta_p:'Interested in NTREPYD\'s technical architecture and compliance framework?',
+      tech_cta_btn:'View Technology Overview',
+      par_label:'For Institutions & Partners',
+      par_h2:'NTREPYD helps institutions reach the people they\'ve been unable to serve.',
+      par_p:'Whether you\'re a government agency, international NGO, financial institution, healthcare provider or technology company — NTREPYD gives you the infrastructure to extend your reach to populations that traditional systems leave behind.',
+      par_t1_h3:'Governments & Public Sector',par_t1_p:'Deploy national digital identity programs, streamline benefit delivery and extend public services to undocumented and marginalized citizens with full compliance and security.',
+      par_t2_h3:'NGOs & Development Organizations',par_t2_p:'Integrate humanitarian aid, financial support and social programs through a single, trusted platform that communities can access on their own terms — with or without prior documentation.',
+      par_t3_h3:'Financial Institutions',par_t3_p:'Expand your customer base to the unbanked and underbanked. NTREPYD provides the identity layer and trust framework you need to serve new markets compliantly and profitably.',
+      par_t4_h3:'Healthcare Providers',par_t4_p:'Deliver telemedicine and preventive care to underserved patients. Integrate seamlessly with NTREPYD\'s health module to reach patients who have never had access to formal healthcare.',
+      par_t5_h3:'Education & Training Providers',par_t5_p:'Connect your programs to communities with real skills gaps. NTREPYD\'s upskilling module bridges formal education providers with populations who need recognized credentials to advance.',
+      par_t6_h3:'Technology & Service Partners',par_t6_p:'Build on top of NTREPYD\'s open platform. Extend the ecosystem with new services, integrations and applications — reaching an audience that no other distribution channel can provide.',
+      par_ban_h2:'"Often invisible to traditional systems — always visible to us."',
+      par_ban_p:'NTREPYD was purpose-built to close the gap between what institutions can offer and what underserved populations actually receive. Let\'s build that bridge together.',
+      par_ban_btn:'Start a Conversation',
+      abt_label:'Leadership',abt_h2:'A team with the experience to deliver at scale.',
+      abt_p1:'NTREPYD was founded by leaders from the worlds of technology, finance, social innovation and digital infrastructure — united by a common belief that the digital economy should work for everyone.',
+      abt_p2:'Our founders bring experience from some of the world\'s most demanding environments — including major global corporations, international development contexts and frontier technology platforms.',
+      abt_btn:'Contact the Team',
+      team_db_role:'Chief Executive Officer',team_db_p:'Former executive at Amazon, Netflix and Nike. Deep expertise in global platform scaling, institutional partnerships and enterprise technology deployment.',
+      team_jv_role:'Chief Technology Officer',team_jv_p:'FinTech and AI specialist with a track record of building secure, high-performance digital financial infrastructure for emerging and regulated markets.',
+      team_yl_role:'Chief Platform Officer',team_yl_p:'Platform monetization and digital ecosystem expert. Focused on building sustainable business models that align revenue with social impact and long-term mission.',
+      team_mp_role:'Chief Strategy Officer',team_mp_p:'Social-tech entrepreneur and strategist with experience building mission-driven initiatives across Latin America and developing markets at a regional scale.',
+      cta_label:'Get Involved',cta_h2:'Build a more inclusive digital future.',
+      cta_p:'Whether you\'re an investor, government partner, NGO, healthcare provider or technology organization — NTREPYD is ready to work with you.',
+      cta_btn1:'Contact NTREPYD',cta_btn2:'Start a Partnership Conversation',
+      ftr_brand:'An inclusive digital platform enabling vulnerable populations to access identity, financial, healthcare, education and essential services worldwide.',
+      ftr_c1_title:'Platform',ftr_c1_1:'Overview',ftr_c1_2:'Digital Identity',ftr_c1_3:'Financial Services',ftr_c1_4:'Healthcare',ftr_c1_5:'Upskilling',ftr_c1_6:'Partner Services',
+      ftr_c2_title:'Organization',ftr_c2_1:'About NTREPYD',ftr_c2_2:'Leadership',ftr_c2_3:'Impact',ftr_c2_4:'Technology',ftr_c2_5:'Partners',
+      ftr_c3_title:'Connect',ftr_c3_1:'Contact Us',ftr_c3_2:'Start a Partnership',ftr_c3_3:'Email',ftr_c3_4:'LinkedIn',ftr_c3_5:'Twitter / X',
+      ftr_copy:'© 2025 NTREPYD. All rights reserved.',
+      ftr_priv:'Privacy Policy',ftr_terms:'Terms of Service',ftr_cook:'Cookie Policy',
+    },
+    es: {
+      nav_platform:'Plataforma',nav_ecosystem:'Ecosistema',nav_impact:'Impacto',
+      nav_technology:'Tecnología',nav_partners:'Socios',nav_about:'Nosotros',
+      nav_cta:'Asóciese con Nosotros',
+      hero_badge:'Infraestructura Digital Inclusiva',
+      hero_h1:'Acceso digital a <em>servicios esenciales</em> para comunidades vulnerables.',
+      hero_p:'NTREPYD permite a poblaciones vulnerables acceder a servicios de identidad, financieros, de salud, educación y vida cotidiana a través de un ecosistema digital inclusivo — sin importar su situación documental, idioma o ubicación.',
+      hero_cta1:'Explorar la Plataforma',hero_cta2:'Asóciese con NTREPYD',
+      stat1:'Módulos de Servicio',stat2:'Listo para Despliegue',stat3:'Plataforma Unificada',
+      prob_label:'El Desafío',
+      prob_h2:'Miles de millones de personas siguen siendo invisibles para los sistemas creados para servirles.',
+      prob_p:'La falta de documentación formal, las barreras idiomáticas, la exclusión financiera y la complejidad burocrática dejan a millones sin acceso a servicios que otros dan por sentados.',
+      prob_c1_h3:'Barreras de Documentación',
+      prob_c1_p:'Cientos de millones de personas carecen de identificación formal para acceder a servicios financieros, atención médica y beneficios sociales. Sin una identificación, simplemente no existen para el sistema.',
+      prob_c2_h3:'Exclusión Financiera',
+      prob_c2_p:'Más de 1.400 millones de adultos en el mundo no tienen acceso a servicios bancarios. No pueden ahorrar, recibir pagos ni construir historial financiero — manteniéndolos en ciclos de vulnerabilidad económica.',
+      prob_c3_h3:'Invisibilidad Sistémica',
+      prob_c3_p:'Los migrantes, refugiados y comunidades marginadas frecuentemente son desconocidos para las instituciones que podrían ayudarlos. El idioma, la geografía y la desconfianza en los sistemas formales agravan su exclusión.',
+      prob_bot_h2:'La escala global de este desafío exige un nuevo tipo de infraestructura.',
+      prob_bot_p:'Los servicios tradicionales fueron diseñados para poblaciones documentadas, bancarizadas y conectadas. NTREPYD fue diseñado para todos los demás.',
+      prob_stat1:'Adultos en el mundo sin acceso a una cuenta bancaria',
+      prob_stat2:'Personas sin prueba legal de identidad',
+      prob_stat3:'Migrantes internacionales navegando sistemas fragmentados',
+      sol_label:'Nuestro Enfoque',
+      sol_h2:'Una plataforma. Una identidad. Acceso a todo lo que importa.',
+      sol_p:'NTREPYD crea un puente sin fricciones entre las poblaciones vulnerables y las instituciones, servicios y oportunidades que necesitan — partiendo de una única identidad digital segura.',
+      sol_s1_h3:'Identidad Digital',sol_s1_p:'Segura, verificable y portátil',
+      sol_s2_h3:'Acceso Financiero',sol_s2_p:'Pagos, ahorros y crédito',
+      sol_s3_h3:'Salud',sol_s3_p:'Telemedicina y acceso a medicamentos',
+      sol_s4_h3:'Educación',sol_s4_p:'Capacitación y oportunidades',
+      sol_s5_h3:'Servicios Esenciales',sol_s5_p:'Necesidades comunitarias y cotidianas',
+      sol_plat_h2:'Diseñado para funcionar donde los sistemas tradicionales no llegan.',
+      sol_plat_p:'NTREPYD está diseñado desde cero para las poblaciones que las plataformas existentes ignoran. Nuestro enfoque es simple: llegar a las personas donde están y conectarlas con lo que necesitan.',
+      sol_f1:'Funciona sin historial bancario ni crediticio previo',
+      sol_f2:'Accesible en múltiples idiomas y entornos de baja conectividad',
+      sol_f3:'Registro biométrico sin necesidad de documentación',
+      sol_f4:'Diseñado para despliegue institucional y gubernamental',
+      sol_f5:'Privacidad primero, conforme a estándares internacionales de datos',
+      sol_cta:'Explorar Todos los Módulos',
+      plat_c1_h4:'Seguro por diseño',plat_c1_p:'Capa de identidad con privacidad primero y protección empresarial',
+      plat_c2_h4:'Acceso instantáneo',plat_c2_p:'Entrega de servicios en tiempo real con costos casi nulos',
+      plat_c3_h4:'Escala global',plat_c3_p:'Infraestructura interoperable diseñada para despliegue mundial',
+      plat_c4_h4:'Grado institucional',plat_c4_p:'Construido para cumplir con gobiernos e industrias reguladas',
+      eco_label:'Módulos de la Plataforma',
+      eco_h2:'Un ecosistema completo de servicios en una sola plataforma.',
+      eco_p:'Cada módulo está diseñado para funcionar de forma independiente o integrada — dando a las instituciones la flexibilidad de desplegar lo que sus comunidades más necesitan.',
+      eco1_h3:'Identidad Digital',eco1_p:'Una identidad digital segura y biométrica que las personas pueden poseer y llevar consigo. Sin documentos formales requeridos para comenzar. Funciona en todos los servicios de NTREPYD y redes de socios.',eco1_tag:'Capa de Identidad',
+      eco2_h3:'Servicios Financieros',eco2_p:'Pagos internacionales, transferencias nacionales, microahorros, microcrédito y seguros — todo accesible sin una cuenta bancaria tradicional. Diseñado para poblaciones de bajos ingresos y no bancarizadas.',eco2_tag:'Módulo FinTech',
+      eco3_h3:'Acceso a Salud',eco3_p:'Consultas de telemedicina, acceso a medicamentos vía microcrédito, historial de salud y derivaciones a proveedores locales. Atención médica que funciona incluso en zonas remotas o desatendidas.',eco3_tag:'Módulo de Salud',
+      eco4_h3:'Capacitación y Oportunidades',eco4_p:'Validación de habilidades, formación certificada, intermediación laboral y vías hacia el empleo formal. Empoderando a las personas para mejorar su situación económica y contribuir a sus comunidades.',eco4_tag:'Módulo Educativo',
+      eco5_h3:'Vinculación Comunitaria',eco5_p:'Herramientas sociales que fortalecen redes comunitarias, facilitan el apoyo entre pares y permiten que líderes locales sirvan de puente entre los residentes y los recursos institucionales.',eco5_tag:'Módulo Comunitario',
+      eco6_h3:'Servicios de Socios',eco6_p:'Una capa de servicios abierta que permite a gobiernos, ONGs, comercios y otros socios ampliar el alcance de la plataforma — llevando sus servicios directamente a los usuarios de NTREPYD a través de un canal de confianza.',eco6_tag:'API de Socios',
+      imp_label:'Nuestro Marco de Impacto',
+      imp_h2:'Midiendo el éxito por vidas transformadas, no solo por transacciones procesadas.',
+      imp_p:'La misión de NTREPYD es fundamentalmente humana. Cada métrica que seguimos corresponde a una persona real que accede a algo que cambia su vida.',
+      imp_p1_h3:'Inclusión',imp_p1_p:'Incorporando a las poblaciones previamente excluidas a la participación económica y social — en igualdad de condiciones.',
+      imp_p2_h3:'Confianza',imp_p2_p:'Construyendo infraestructura confiable en la que las instituciones puedan apoyarse y las comunidades puedan creer.',
+      imp_p3_h3:'Acceso',imp_p3_p:'Desbloqueando servicios que deberían ser universales — salud, finanzas, educación — para todos, en todas partes.',
+      imp_p4_h3:'Empoderamiento',imp_p4_p:'Dando a las personas las herramientas para construir resiliencia financiera, mejorar sus habilidades y forjar su propio futuro.',
+      imp_p5_h3:'Alcance Institucional',imp_p5_p:'Permitiendo a gobiernos y organizaciones extender su mandato a las poblaciones que más lo necesitan.',
+      imp_m1_val:'Diseñado para escala global',imp_m1_lbl:'Infraestructura desplegable en múltiples regiones, idiomas y entornos regulatorios',
+      imp_m2_val:'Diseñado para comunidades vulnerables',imp_m2_lbl:'Cada decisión de producto pone en el centro las necesidades de las poblaciones vulnerables y excluidas',
+      imp_m3_val:'Conectando personas, instituciones y servicios',imp_m3_lbl:'Un puente entre las poblaciones más vulnerables del mundo y los sistemas que pueden servirles',
+      tech_label:'Infraestructura',
+      tech_h2:'Tecnología construida para la confianza, la seguridad y la escala.',
+      tech_p:'No lideramos con tecnología — lideramos con misión. Pero la infraestructura detrás de NTREPYD está diseñada bajo los más altos estándares institucionales, garantizando que cada servicio sea seguro, confiable y listo para el despliegue global.',
+      tech_p1_h3:'Infraestructura Digital Segura',tech_p1_p:'Seguridad de nivel empresarial con cifrado avanzado y autenticación biométrica. Construida para cumplir con los estándares internacionales de protección de datos y de confianza para instituciones reguladas.',
+      tech_p2_h3:'Ecosistema de Servicios Escalable',tech_p2_p:'Arquitectado para manejar altos volúmenes de transacciones en redes distribuidas — desde un piloto comunitario hasta despliegues a escala nacional — sin sacrificar velocidad ni fiabilidad.',
+      tech_p3_h3:'Plataforma Interoperable',tech_p3_p:'Arquitectura abierta que se conecta sin fricciones con bases de datos gubernamentales, instituciones financieras, sistemas de salud y proveedores de terceros mediante APIs y protocolos estándar.',
+      tech_p4_h3:'Capa de Identidad con Privacidad Primero',tech_p4_p:'Los usuarios son dueños y controlan sus datos de identidad. La divulgación selectiva permite probar atributos sin compartir información innecesaria — habilitando el acceso y preservando la dignidad.',
+      tech_cta_p:'¿Le interesa la arquitectura técnica y el marco de cumplimiento de NTREPYD?',
+      tech_cta_btn:'Ver Resumen Tecnológico',
+      par_label:'Para Instituciones y Socios',
+      par_h2:'NTREPYD ayuda a las instituciones a llegar a las personas a las que no han podido servir.',
+      par_p:'Ya sea una agencia gubernamental, una ONG internacional, una institución financiera, un proveedor de salud o una empresa tecnológica — NTREPYD le da la infraestructura para ampliar su alcance a las poblaciones que los sistemas tradicionales dejan atrás.',
+      par_t1_h3:'Gobiernos y Sector Público',par_t1_p:'Despliegue programas nacionales de identidad digital, optimice la entrega de beneficios y extienda los servicios públicos a ciudadanos indocumentados y marginados con pleno cumplimiento y seguridad.',
+      par_t2_h3:'ONGs y Organizaciones de Desarrollo',par_t2_p:'Integre ayuda humanitaria, apoyo financiero y programas sociales a través de una plataforma única y confiable a la que las comunidades pueden acceder en sus propios términos — con o sin documentación previa.',
+      par_t3_h3:'Instituciones Financieras',par_t3_p:'Amplíe su base de clientes hacia los no bancarizados. NTREPYD proporciona la capa de identidad y el marco de confianza que necesita para servir a nuevos mercados de forma rentable y conforme a regulaciones.',
+      par_t4_h3:'Proveedores de Salud',par_t4_p:'Ofrezca telemedicina y atención preventiva a pacientes desatendidos. Intégrese fácilmente con el módulo de salud de NTREPYD para llegar a pacientes que nunca han tenido acceso a atención médica formal.',
+      par_t5_h3:'Proveedores de Educación y Formación',par_t5_p:'Conecte sus programas con comunidades con verdaderas brechas de habilidades. El módulo de capacitación de NTREPYD vincula a proveedores de educación formal con poblaciones que necesitan credenciales reconocidas para avanzar.',
+      par_t6_h3:'Socios Tecnológicos y de Servicios',par_t6_p:'Construya sobre la plataforma abierta de NTREPYD. Extienda el ecosistema con nuevos servicios, integraciones y aplicaciones — llegando a una audiencia que ningún otro canal de distribución puede ofrecer.',
+      par_ban_h2:'"A menudo invisibles para los sistemas tradicionales — siempre visibles para nosotros."',
+      par_ban_p:'NTREPYD fue diseñado con un propósito: cerrar la brecha entre lo que las instituciones pueden ofrecer y lo que las poblaciones vulnerables realmente reciben. Construyamos ese puente juntos.',
+      par_ban_btn:'Iniciar una Conversación',
+      abt_label:'Liderazgo',abt_h2:'Un equipo con la experiencia para operar a escala.',
+      abt_p1:'NTREPYD fue fundado por líderes del mundo de la tecnología, las finanzas, la innovación social y la infraestructura digital — unidos por la convicción de que la economía digital debe funcionar para todos.',
+      abt_p2:'Nuestros fundadores aportan experiencia de algunos de los entornos más exigentes del mundo — incluyendo grandes corporaciones globales, contextos de desarrollo internacional y plataformas tecnológicas de vanguardia.',
+      abt_btn:'Contactar al Equipo',
+      team_db_role:'Director Ejecutivo',team_db_p:'Ex ejecutivo en Amazon, Netflix y Nike. Profunda experiencia en escalamiento de plataformas globales, alianzas institucionales y despliegue de tecnología empresarial.',
+      team_jv_role:'Director de Tecnología',team_jv_p:'Especialista en FinTech e IA con trayectoria en la construcción de infraestructura financiera digital segura y de alto rendimiento para mercados emergentes y regulados.',
+      team_yl_role:'Director de Plataforma',team_yl_p:'Experto en monetización de plataformas y ecosistemas digitales. Enfocado en construir modelos de negocio sostenibles que alineen los ingresos con el impacto social y la misión a largo plazo.',
+      team_mp_role:'Director de Estrategia',team_mp_p:'Emprendedor y estratega de tecnología social con experiencia construyendo iniciativas de misión en América Latina y mercados en desarrollo a escala regional.',
+      cta_label:'Únase',cta_h2:'Construya un futuro digital más inclusivo.',
+      cta_p:'Ya sea inversor, socio gubernamental, ONG, proveedor de salud u organización tecnológica — NTREPYD está listo para trabajar con usted.',
+      cta_btn1:'Contactar a NTREPYD',cta_btn2:'Iniciar una Conversación de Alianza',
+      ftr_brand:'Una plataforma digital inclusiva que permite a poblaciones vulnerables acceder a servicios de identidad, financieros, de salud, educación y servicios esenciales en todo el mundo.',
+      ftr_c1_title:'Plataforma',ftr_c1_1:'Descripción general',ftr_c1_2:'Identidad Digital',ftr_c1_3:'Servicios Financieros',ftr_c1_4:'Salud',ftr_c1_5:'Capacitación',ftr_c1_6:'Servicios de Socios',
+      ftr_c2_title:'Organización',ftr_c2_1:'Sobre NTREPYD',ftr_c2_2:'Liderazgo',ftr_c2_3:'Impacto',ftr_c2_4:'Tecnología',ftr_c2_5:'Socios',
+      ftr_c3_title:'Contacto',ftr_c3_1:'Contáctenos',ftr_c3_2:'Iniciar una Alianza',ftr_c3_3:'Email',ftr_c3_4:'LinkedIn',ftr_c3_5:'Twitter / X',
+      ftr_copy:'© 2025 NTREPYD. Todos los derechos reservados.',
+      ftr_priv:'Política de Privacidad',ftr_terms:'Términos de Servicio',ftr_cook:'Política de Cookies',
+    }
+  };
+
+  let currentLang = localStorage.getItem('ntrepyd-lang') || 'en';
+
+  function setLanguage(l) {
+    currentLang = l;
+    localStorage.setItem('ntrepyd-lang', l);
+    const t = T[l];
+    document.documentElement.lang = l;
+    const q = s => document.querySelector(s);
+    const qa = s => [...document.querySelectorAll(s)];
+
+    // Nav
+    const nl = qa('.nav-links a');
+    [t.nav_platform,t.nav_ecosystem,t.nav_impact,t.nav_technology,t.nav_partners,t.nav_about].forEach((v,i)=>nl[i].textContent=v);
+    q('#nav-cta-btn').textContent = t.nav_cta;
+
+    // Hero
+    q('.hero-badge').innerHTML = '<span class="hero-badge-dot"></span>' + t.hero_badge;
+    q('#hero h1').innerHTML = t.hero_h1;
+    q('#hero .hero-content > p').textContent = t.hero_p;
+    const ha = qa('#hero .hero-actions .btn');
+    ha[0].innerHTML = t.hero_cta1 + ' <span class="arrow">→</span>';
+    ha[1].textContent = t.hero_cta2;
+    const sl = qa('.hero-stat-label');
+    sl[0].textContent=t.stat1; sl[1].textContent=t.stat2; sl[2].textContent=t.stat3;
+
+    // Problem
+    q('#problem .label').textContent = t.prob_label;
+    q('#problem .problem-intro h2').textContent = t.prob_h2;
+    q('#problem .problem-intro p').textContent = t.prob_p;
+    qa('.problem-card').forEach((c,i) => {
+      const k = 'prob_c'+(i+1);
+      c.querySelector('h3').textContent = t[k+'_h3'];
+      c.querySelector('p').textContent = t[k+'_p'];
+    });
+    q('.problem-bottom h2').textContent = t.prob_bot_h2;
+    q('.problem-bottom div:first-child p').textContent = t.prob_bot_p;
+    qa('.problem-stat-text').forEach((el,i) => el.textContent = t['prob_stat'+(i+1)]);
+
+    // Solution
+    q('#solution .label').textContent = t.sol_label;
+    q('.solution-intro h2').textContent = t.sol_h2;
+    q('.solution-intro p').textContent = t.sol_p;
+    qa('.solution-step').forEach((s,i) => {
+      s.querySelector('h3').textContent = t['sol_s'+(i+1)+'_h3'];
+      s.querySelector('p').textContent = t['sol_s'+(i+1)+'_p'];
+    });
+    q('.solution-platform h2').textContent = t.sol_plat_h2;
+    q('.solution-platform > div > p').textContent = t.sol_plat_p;
+    qa('.platform-feature').forEach((el,i) => {
+      el.innerHTML = '<span class="platform-feature-dot"></span>' + t['sol_f'+(i+1)];
+    });
+    q('#solution .btn--teal').innerHTML = t.sol_cta + ' <span class="arrow">→</span>';
+    qa('.platform-card').forEach((c,i) => {
+      c.querySelector('h4').textContent = t['plat_c'+(i+1)+'_h4'];
+      c.querySelector('p').textContent = t['plat_c'+(i+1)+'_p'];
+    });
+
+    // Ecosystem
+    q('#ecosystem .label').textContent = t.eco_label;
+    q('.ecosystem-intro h2').textContent = t.eco_h2;
+    q('.ecosystem-intro p').textContent = t.eco_p;
+    qa('.eco-card').forEach((c,i) => {
+      c.querySelector('h3').textContent = t['eco'+(i+1)+'_h3'];
+      c.querySelector('p').textContent = t['eco'+(i+1)+'_p'];
+      c.querySelector('.eco-tag').textContent = t['eco'+(i+1)+'_tag'];
+    });
+
+    // Impact
+    q('#impact .label').textContent = t.imp_label;
+    q('.impact-intro h2').textContent = t.imp_h2;
+    q('.impact-intro p').textContent = t.imp_p;
+    qa('.impact-pillar').forEach((p,i) => {
+      p.querySelector('h3').textContent = t['imp_p'+(i+1)+'_h3'];
+      p.querySelector('p').textContent = t['imp_p'+(i+1)+'_p'];
+    });
+    qa('.impact-metric').forEach((m,i) => {
+      m.querySelector('.impact-metric-value').textContent = t['imp_m'+(i+1)+'_val'];
+      m.querySelector('.impact-metric-label').textContent = t['imp_m'+(i+1)+'_lbl'];
+    });
+
+    // Technology
+    q('#technology .label').textContent = t.tech_label;
+    q('.tech-intro h2').textContent = t.tech_h2;
+    q('.tech-intro p').textContent = t.tech_p;
+    qa('.tech-pillar').forEach((p,i) => {
+      p.querySelector('h3').textContent = t['tech_p'+(i+1)+'_h3'];
+      p.querySelector('p').textContent = t['tech_p'+(i+1)+'_p'];
+    });
+    q('.tech-cta-row p').textContent = t.tech_cta_p;
+    q('.tech-cta-row .btn').innerHTML = t.tech_cta_btn + ' <span class="arrow">→</span>';
+
+    // Partners
+    q('#partners .label').textContent = t.par_label;
+    q('.partners-intro h2').textContent = t.par_h2;
+    q('.partners-intro p').textContent = t.par_p;
+    qa('.partner-type').forEach((pt,i) => {
+      pt.querySelector('h3').textContent = t['par_t'+(i+1)+'_h3'];
+      pt.querySelector('p').textContent = t['par_t'+(i+1)+'_p'];
+    });
+    q('.partners-banner h2').innerHTML = t.par_ban_h2;
+    q('.partners-banner > div > p').textContent = t.par_ban_p;
+    q('.partners-banner .btn').innerHTML = t.par_ban_btn + ' <span class="arrow">→</span>';
+
+    // About
+    q('#about .label').textContent = t.abt_label;
+    q('.about-content h2').textContent = t.abt_h2;
+    const ap = qa('.about-content p');
+    ap[0].textContent = t.abt_p1; ap[1].textContent = t.abt_p2;
+    q('.about-content .btn').textContent = t.abt_btn;
+    ['db','jv','yl','mp'].forEach((k,i) => {
+      const c = qa('.team-card')[i];
+      c.querySelector('.team-card-role').textContent = t['team_'+k+'_role'];
+      c.querySelector('p').textContent = t['team_'+k+'_p'];
+    });
+
+    // CTA
+    q('#cta .label').textContent = t.cta_label;
+    q('#cta h2').textContent = t.cta_h2;
+    qa('#cta p')[0].textContent = t.cta_p;
+    const cb = qa('#cta .cta-actions .btn');
+    cb[0].innerHTML = t.cta_btn1 + ' <span class="arrow">→</span>';
+    cb[1].textContent = t.cta_btn2;
+
+    // Footer
+    q('.footer-brand p').textContent = t.ftr_brand;
+    const fc = qa('.footer-col');
+    fc[0].querySelector('h4').textContent = t.ftr_c1_title;
+    fc[0].querySelectorAll('li a').forEach((a,i) => a.textContent = t['ftr_c1_'+(i+1)]);
+    fc[1].querySelector('h4').textContent = t.ftr_c2_title;
+    fc[1].querySelectorAll('li a').forEach((a,i) => a.textContent = t['ftr_c2_'+(i+1)]);
+    fc[2].querySelector('h4').textContent = t.ftr_c3_title;
+    fc[2].querySelectorAll('li a').forEach((a,i) => a.textContent = t['ftr_c3_'+(i+1)]);
+    q('.footer-bottom p').textContent = t.ftr_copy;
+    const ll = qa('.footer-legal a');
+    ll[0].textContent=t.ftr_priv; ll[1].textContent=t.ftr_terms; ll[2].textContent=t.ftr_cook;
+
+    // Re-render current slide in new language
+    if (typeof renderSlide === 'function') renderSlide(currentSlideIdx, true);
+    // Toggle state
+    document.getElementById('btn-en').classList.toggle('active', l==='en');
+    document.getElementById('btn-es').classList.toggle('active', l==='es');
+  }
+
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  const scrollHandler = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', scrollHandler, { passive: true });
+  scrollHandler();
+
+  /* ── Scroll animations ── */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(el => observer.observe(el));
+
+  /* ── Hamburger ── */
+  document.getElementById('hamburger').addEventListener('click', function(){ this.classList.toggle('active'); });
+
+  /* ── Smooth links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  /* ── Init ── */
+  setLanguage(currentLang);
+
+  /* ── Canvas particle network ── */
+  (function() {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let pts = [], raf;
+
+    function resize() {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      init();
+    }
+
+    function init() {
+      pts = [];
+      const n = Math.min(72, Math.floor(canvas.width * canvas.height / 13000));
+      for (let i = 0; i < n; i++) {
+        pts.push({
+          x:  Math.random() * canvas.width,
+          y:  Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.38,
+          vy: (Math.random() - 0.5) * 0.38,
+          r:  Math.random() * 1.6 + 0.8,
+          hue: Math.random() > 0.55 ? 174 : 217   // teal or blue
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const maxDist = 140;
+
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        // dot
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${p.hue},80%,65%,0.55)`;
+        ctx.fill();
+
+        // connections
+        for (let j = i + 1; j < pts.length; j++) {
+          const q = pts[j];
+          const dx = p.x - q.x, dy = p.y - q.y;
+          const d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < maxDist) {
+            const alpha = 0.13 * (1 - d / maxDist);
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(99,160,255,${alpha})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+      raf = requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+    window.addEventListener('resize', () => { cancelAnimationFrame(raf); resize(); }, { passive: true });
+  })();
+
+  /* ── Hero entrance sequence ── */
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      document.querySelectorAll('.hero-enter').forEach(el => el.classList.add('hero-entered'));
+    }, 80);
+  });
+
+  /* ── Hero Slider ── */
+  const SLIDES = {
+    en: [
+      {
+        badge:'Inclusive Digital Infrastructure',
+        h1:'Digital access to <em>essential services</em> for underserved communities.',
+        p:'NTREPYD enables vulnerable populations to access identity, financial, healthcare, education and daily services through one inclusive digital ecosystem — regardless of documentation status, language, or location.',
+        cta1:'Explore the Platform', href1:'#ecosystem',
+        cta2:'Partner with NTREPYD', href2:'#cta'
+      },
+      {
+        badge:'Social Impact at Global Scale',
+        h1:'<em>1.4 billion people</em> deserve a door into the digital economy.',
+        p:'Unbanked, undocumented and underserved — hundreds of millions are excluded from services others take for granted. NTREPYD opens a door for every one of them, starting with a single secure digital identity.',
+        cta1:'See Our Impact', href1:'#impact',
+        cta2:'How It Works', href2:'#solution'
+      },
+      {
+        badge:'Built for Institutions & Governments',
+        h1:'The infrastructure that helps <em>institutions reach</em> everyone they\'ve been unable to serve.',
+        p:'NTREPYD gives governments, NGOs, financial institutions and healthcare providers the tools they need to extend essential services to populations that traditional systems consistently miss.',
+        cta1:'Partner with NTREPYD', href1:'#cta',
+        cta2:'View Technology', href2:'#technology'
+      }
+    ],
+    es: [
+      {
+        badge:'Infraestructura Digital Inclusiva',
+        h1:'Acceso digital a <em>servicios esenciales</em> para comunidades vulnerables.',
+        p:'NTREPYD permite a poblaciones vulnerables acceder a servicios de identidad, financieros, de salud, educación y vida cotidiana a través de un ecosistema digital inclusivo — sin importar su situación documental, idioma o ubicación.',
+        cta1:'Explorar la Plataforma', href1:'#ecosystem',
+        cta2:'Asóciese con NTREPYD', href2:'#cta'
+      },
+      {
+        badge:'Impacto Social a Escala Global',
+        h1:'<em>1.400 millones de personas</em> merecen acceso a la economía digital.',
+        p:'Sin cuenta bancaria, sin documentos, sin servicios — cientos de millones están excluidos de lo que otros dan por sentado. NTREPYD les abre una puerta, comenzando con una identidad digital segura.',
+        cta1:'Ver el Impacto', href1:'#impact',
+        cta2:'Cómo Funciona', href2:'#solution'
+      },
+      {
+        badge:'Diseñado para Instituciones y Gobiernos',
+        h1:'La infraestructura que ayuda a las <em>instituciones</em> a llegar a quienes no han podido servir.',
+        p:'NTREPYD da a los gobiernos, ONGs, instituciones financieras y proveedores de salud la infraestructura para extender servicios esenciales a las poblaciones que los sistemas tradicionales no alcanzan.',
+        cta1:'Asóciese con NTREPYD', href1:'#cta',
+        cta2:'Ver Tecnología', href2:'#technology'
+      }
+    ]
+  };
+
+  let currentSlideIdx = 0;
+  let slideProgressRaf, slideStart = 0;
+  const SLIDE_DURATION = 6800;
+
+  function renderSlide(idx, skipTransition) {
+    const s  = SLIDES[currentLang][idx];
+    const hc = document.querySelector('#hero .hero-content');
+    const q  = sel => document.querySelector(sel);
+    const qa = sel => [...document.querySelectorAll(sel)];
+
+    function apply() {
+      q('.hero-badge').innerHTML = '<span class="hero-badge-dot"></span>' + s.badge;
+      q('#hero h1').innerHTML = s.h1;
+      q('#hero .hero-content > p').textContent = s.p;
+      const btns = qa('#hero .hero-actions .btn');
+      if (btns[0]) { btns[0].innerHTML = s.cta1 + ' <span class="arrow">→</span>'; btns[0].href = s.href1; }
+      if (btns[1]) { btns[1].textContent = s.cta2; btns[1].href = s.href2; }
+      qa('.sdot').forEach((d, i) => d.classList.toggle('active', i === idx));
+      currentSlideIdx = idx;
+    }
+
+    cancelAnimationFrame(slideProgressRaf);
+    if (skipTransition) {
+      apply();
+    } else {
+      hc.classList.add('sliding');
+      setTimeout(() => { apply(); hc.classList.remove('sliding'); }, 450);
+    }
+    startProgress();
+  }
+
+  function startProgress() {
+    cancelAnimationFrame(slideProgressRaf);
+    slideStart = performance.now();
+    const bar = document.getElementById('slide-bar');
+    if (!bar) return;
+    (function tick(now) {
+      const pct = Math.min(100, ((now - slideStart) / SLIDE_DURATION) * 100);
+      bar.style.width = pct + '%';
+      if (pct < 100) {
+        slideProgressRaf = requestAnimationFrame(tick);
+      } else {
+        renderSlide((currentSlideIdx + 1) % SLIDES[currentLang].length);
+      }
+    })(performance.now());
+  }
+
+  function jumpSlide(idx) {
+    cancelAnimationFrame(slideProgressRaf);
+    if (idx !== currentSlideIdx) renderSlide(idx);
+    else startProgress();
+  }
+
+  /* Pause on hover */
+  const heroSection = document.getElementById('hero');
+  if (heroSection) {
+    let pausedAt = 0;
+    heroSection.addEventListener('mouseenter', () => {
+      cancelAnimationFrame(slideProgressRaf);
+      pausedAt = performance.now();
+    });
+    heroSection.addEventListener('mouseleave', () => {
+      const elapsed = pausedAt - slideStart;
+      slideStart = performance.now() - elapsed;
+      startProgress();
+    });
+  }
+
+  /* Swipe support (mobile) */
+  let touchX = 0;
+  document.getElementById('hero').addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  document.getElementById('hero').addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) jumpSlide((currentSlideIdx + (dx < 0 ? 1 : -1) + 3) % 3);
+  }, { passive: true });
+
+  /* Start autoplay after entrance animation */
+  setTimeout(() => startProgress(), 1200);
+
+  /* ── Formspree contact form handler ── */
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('form-submit-btn');
+    const ok  = document.getElementById('form-success');
+    const err = document.getElementById('form-error');
+    btn.disabled = true;
+    btn.innerHTML = 'Sending…';
+    try {
+      const res = await fetch(e.target.action, {
+        method: 'POST',
+        body: new FormData(e.target),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        ok.style.display = 'block';
+        err.style.display = 'none';
+        e.target.reset();
+        btn.style.display = 'none';
+      } else {
+        throw new Error('server');
+      }
+    } catch(_) {
+      err.style.display = 'block';
+      ok.style.display  = 'none';
+      btn.disabled = false;
+      btn.innerHTML = 'Send Message <span class="arrow">→</span>';
+    }
+  }
+</script>
+</body>
+</html>
