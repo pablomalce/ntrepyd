@@ -658,11 +658,12 @@
     /* ─── Hero entrance animations ─── */
     .hero-enter {
       opacity: 0; transform: translateY(28px);
-    }
-    .hero-entered {
-      opacity: 1 !important; transform: translateY(0) !important;
+      /* transition must live HERE so browser knows the start state */
       transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
                   transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .hero-entered {
+      opacity: 1; transform: translateY(0);
     }
     .hd-1 { transition-delay: 0.1s; }
     .hd-2 { transition-delay: 0.28s; }
@@ -1490,11 +1491,12 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 NTREPYD. All rights reserved.</p>
+      <p id="footer-copy">© 2025 NTREPYD. All rights reserved.</p>
       <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookie Policy</a>
+        <a href="#" id="ftr-priv-link">Privacy Policy</a>
+        <a href="#" id="ftr-terms-link">Terms of Service</a>
+        <a href="#" id="ftr-cook-link">Cookie Policy</a>
+        <a href="ui-kit.html" style="color:rgba(255,255,255,.2); font-size:.7rem; letter-spacing:.06em;" title="Hero Design Options">⬡ UI Kit</a>
       </div>
     </div>
   </div>
@@ -1825,12 +1827,31 @@
     });
 
     // CTA
-    q('#cta .label').textContent = t.cta_label;
-    q('#cta h2').textContent = t.cta_h2;
-    qa('#cta p')[0].textContent = t.cta_p;
-    const cb = qa('#cta .cta-actions .btn');
-    cb[0].innerHTML = t.cta_btn1 + ' <span class="arrow">→</span>';
-    cb[1].textContent = t.cta_btn2;
+    if (q('#cta .label'))    q('#cta .label').textContent = t.cta_label;
+    if (q('#cta h2'))        q('#cta h2').textContent = t.cta_h2;
+    if (qa('#cta p')[0])     qa('#cta p')[0].textContent = t.cta_p;
+    // Form placeholders & select options i18n
+    const nameInput = q('#contact-form [name="name"]');
+    const emailInput = q('#contact-form [name="email"]');
+    if (nameInput)  nameInput.placeholder = l === 'es' ? 'Su nombre *'    : 'Your name *';
+    if (emailInput) emailInput.placeholder = l === 'es' ? 'Email laboral *' : 'Work e-mail *';
+    const typeSelect = q('#contact-form [name="type"]');
+    if (typeSelect) {
+      const opts = l === 'es'
+        ? ['Tipo de consulta','Inversión / Financiamiento','Alianza Gubernamental','ONG / Sociedad Civil','Socio Tecnológico','Proveedor de Salud','Otro']
+        : ['Type of inquiry','Investment / Funding','Government Partnership','NGO / Civil Society','Technology Partner','Healthcare Provider','Other'];
+      [...typeSelect.options].forEach((o,i) => { if (opts[i]) o.text = opts[i]; });
+    }
+    const msgInput = q('#contact-form [name="message"]');
+    if (msgInput) msgInput.placeholder = l === 'es' ? 'Mensaje breve…' : 'Brief message…';
+    const submitBtn = q('#form-submit-btn');
+    if (submitBtn && submitBtn.style.display !== 'none') {
+      submitBtn.innerHTML = (l === 'es' ? 'Enviar Mensaje' : 'Send Message') + ' <span class="arrow">→</span>';
+    }
+    const successMsg = q('#form-success');
+    if (successMsg) successMsg.textContent = l === 'es'
+      ? '✓ Mensaje enviado — nos pondremos en contacto en 2 días hábiles.'
+      : '✓ Message sent — we\'ll be in touch within 2 business days.';
 
     // Footer
     q('.footer-brand p').textContent = t.ftr_brand;
@@ -1949,12 +1970,20 @@
     window.addEventListener('resize', () => { cancelAnimationFrame(raf); resize(); }, { passive: true });
   })();
 
-  /* ── Hero entrance sequence ── */
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      document.querySelectorAll('.hero-enter').forEach(el => el.classList.add('hero-entered'));
-    }, 80);
-  });
+  /* ── Hero entrance sequence ──
+     Double-RAF ensures browser has painted at least one frame before
+     we add hero-entered, so the CSS transition has a defined start state.
+     The 120 ms fallback covers browsers that batch rAFs aggressively.  */
+  function triggerHeroEntrance() {
+    document.querySelectorAll('.hero-enter').forEach(el => el.classList.add('hero-entered'));
+  }
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    setTimeout(triggerHeroEntrance, 60);
+  }));
+  // Hard fallback: if animation hasn't fired after 800ms just show everything
+  setTimeout(() => {
+    document.querySelectorAll('.hero-enter:not(.hero-entered)').forEach(el => el.classList.add('hero-entered'));
+  }, 800);
 
   /* ── Hero Slider ── */
   const SLIDES = {
