@@ -15,24 +15,25 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --void:    #050709;
-  --deep:    #090c12;
-  --surface: #0d1117;
-  --panel:   #111620;
-  --border:  #1e2535;
-  --border2: #2a3347;
-  --red:     #e8253d;
-  --red-dim: #8c1526;
-  --red-glow:#ff2d45;
-  --orange:  #ff6030;
+  --void:    #0a0a0a;
+  --deep:    #0f0f0f;
+  --surface: #141414;
+  --panel:   #1a1a1a;
+  --border:  #242424;
+  --border2: #2e2e2e;
+  /* ── Vulkan brand orange ── */
+  --vk:      #E84B2F;
+  --vk-dim:  #7a2010;
+  --vk-glow: #ff5535;
+  --vk-pale: rgba(232,75,47,.12);
+  /* ── Supporting palette ── */
   --amber:   #f59e0b;
   --teal:    #00d4b4;
-  --teal-d:  #009e87;
   --blue:    #3b82f6;
   --green:   #00e676;
-  --white:   #f0f4ff;
-  --dim:     #8896b3;
-  --dimmer:  #4a5568;
+  --white:   #f5f5f5;
+  --dim:     #888888;
+  --dimmer:  #444444;
   --mono: 'JetBrains Mono', 'Courier New', monospace;
   --raj:  'Rajdhani', sans-serif;
   --orb:  'Orbitron', sans-serif;
@@ -52,8 +53,8 @@ body {
       0deg,
       transparent,
       transparent 2px,
-      rgba(0,212,180,.008) 2px,
-      rgba(0,212,180,.008) 4px
+      rgba(232,75,47,.006) 2px,
+      rgba(232,75,47,.006) 4px
     );
 }
 
@@ -62,8 +63,8 @@ body::before {
   content: '';
   position: fixed; inset: 0; pointer-events: none; z-index: 0;
   background-image:
-    linear-gradient(rgba(30,37,53,.7) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,37,53,.7) 1px, transparent 1px);
+    linear-gradient(rgba(36,36,36,.8) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36,36,36,.8) 1px, transparent 1px);
   background-size: 48px 48px;
   opacity: .4;
 }
@@ -73,7 +74,7 @@ body::before {
   position: relative; z-index: 1;
   min-height: 420px;
   background: var(--deep);
-  border-bottom: 1px solid var(--red);
+  border-bottom: 1px solid var(--vk);
   overflow: hidden;
   display: flex; flex-direction: column; justify-content: flex-end;
   padding: 0 52px 48px;
@@ -86,9 +87,9 @@ body::before {
   background:
     linear-gradient(180deg,
       transparent 0%, transparent 38%,
-      rgba(232,37,61,.06) 38.5%, transparent 39%,
+      rgba(232,75,47,.06) 38.5%, transparent 39%,
       transparent 62%,
-      rgba(232,37,61,.04) 62.5%, transparent 63%
+      rgba(232,75,47,.04) 62.5%, transparent 63%
     );
   pointer-events: none;
 }
@@ -97,44 +98,44 @@ body::before {
 .cover-diag {
   position: absolute; top: -120px; right: -80px;
   width: 520px; height: 520px;
-  border: 1px solid rgba(232,37,61,.15);
+  border: 1px solid rgba(232,75,47,.15);
   transform: rotate(22deg);
   pointer-events: none;
 }
 .cover-diag::before {
   content: '';
   position: absolute; inset: 24px;
-  border: 1px solid rgba(232,37,61,.08);
+  border: 1px solid rgba(232,75,47,.08);
 }
 .cover-diag::after {
   content: '';
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%,-50%);
   width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(232,37,61,.14) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232,75,47,.14) 0%, transparent 70%);
 }
 
 /* corner brackets */
 .cover-corner { position: absolute; width: 40px; height: 40px; }
-.cover-corner--tl { top: 24px; left: 24px; border-top: 2px solid var(--red); border-left: 2px solid var(--red); }
-.cover-corner--tr { top: 24px; right: 24px; border-top: 2px solid var(--red); border-right: 2px solid var(--red); }
-.cover-corner--bl { bottom: 24px; left: 24px; border-bottom: 2px solid var(--red); border-left: 2px solid var(--red); }
-.cover-corner--br { bottom: 24px; right: 24px; border-bottom: 2px solid var(--red); border-right: 2px solid var(--red); }
+.cover-corner--tl { top: 24px; left: 24px; border-top: 2px solid var(--vk); border-left: 2px solid var(--vk); }
+.cover-corner--tr { top: 24px; right: 24px; border-top: 2px solid var(--vk); border-right: 2px solid var(--vk); }
+.cover-corner--bl { bottom: 24px; left: 24px; border-bottom: 2px solid var(--vk); border-left: 2px solid var(--vk); }
+.cover-corner--br { bottom: 24px; right: 24px; border-bottom: 2px solid var(--vk); border-right: 2px solid var(--vk); }
 
 .cover-sys {
   font-family: var(--mono);
-  font-size: .7rem; color: var(--red-dim); letter-spacing: .14em;
+  font-size: .7rem; color: var(--vk-dim); letter-spacing: .14em;
   margin-bottom: 56px; display: flex; gap: 32px;
 }
 .cover-sys span { display: flex; align-items: center; gap: 6px; }
-.cover-sys span::before { content: '▶'; font-size: .55rem; color: var(--red); }
+.cover-sys span::before { content: '▶'; font-size: .55rem; color: var(--vk); }
 
 .cover-logo {
   font-family: var(--orb);
   font-size: 3.5rem; font-weight: 900;
   letter-spacing: .12em;
   color: var(--white);
-  text-shadow: 0 0 40px rgba(232,37,61,.6), 0 0 80px rgba(232,37,61,.25);
+  text-shadow: 0 0 40px rgba(232,75,47,.6), 0 0 80px rgba(232,75,47,.25);
   line-height: 1;
   margin-bottom: 6px;
   position: relative;
@@ -142,10 +143,10 @@ body::before {
 .cover-logo::after {
   content: 'NTREPYD';
   position: absolute; left: 3px; top: 3px;
-  color: rgba(232,37,61,.25);
+  color: rgba(232,75,47,.25);
   z-index: -1;
 }
-.cover-logo .logo-accent { color: var(--red); }
+.cover-logo .logo-accent { color: var(--vk); }
 
 .cover-subtitle {
   font-family: var(--raj);
@@ -161,7 +162,7 @@ body::before {
   letter-spacing: .04em; text-transform: uppercase;
   max-width: 640px; margin-bottom: 20px;
 }
-.cover-title em { color: var(--red); font-style: normal; }
+.cover-title em { color: var(--vk); font-style: normal; }
 
 .cover-desc {
   font-size: .85rem; color: var(--dim);
@@ -176,7 +177,7 @@ body::before {
   border-right: 1px solid var(--border2);
 }
 .cover-meta-item:last-child { border-right: none; }
-.cover-meta-item .mk { font-size: .65rem; color: var(--red); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 4px; }
+.cover-meta-item .mk { font-size: .65rem; color: var(--vk); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 4px; }
 .cover-meta-item .mv { font-size: .85rem; color: var(--white); font-weight: 500; }
 
 /* ─── BODY ─── */
@@ -217,8 +218,8 @@ body::before {
   white-space: nowrap;
 }
 .badge::before { content: ''; width: 5px; height: 5px; flex-shrink: 0; }
-.badge-must  { color: var(--red);    border-color: var(--red-dim);  background: rgba(232,37,61,.08); }
-.badge-must::before  { background: var(--red); box-shadow: 0 0 6px var(--red); }
+.badge-must  { color: var(--vk); border-color: var(--vk-dim); background: rgba(232,75,47,.08); }
+.badge-must::before  { background: var(--vk); box-shadow: 0 0 7px rgba(232,75,47,.9); }
 .badge-nice  { color: var(--amber);  border-color: rgba(245,158,11,.35); background: rgba(245,158,11,.07); }
 .badge-nice::before  { background: var(--amber); }
 .badge-opt   { color: var(--teal);   border-color: rgba(0,212,180,.3); background: rgba(0,212,180,.06); }
@@ -233,12 +234,12 @@ body::before {
 .sec-header::after {
   content: '';
   position: absolute; bottom: 0; left: 0; right: 0;
-  height: 1px; background: linear-gradient(90deg, var(--red) 0%, var(--border) 60%, transparent 100%);
+  height: 1px; background: linear-gradient(90deg, var(--vk) 0%, var(--border) 60%, transparent 100%);
 }
 .sec-num {
   font-family: var(--orb); font-size: .65rem; font-weight: 700;
-  color: var(--red); background: var(--panel);
-  border: 1px solid var(--red-dim); border-bottom: none;
+  color: var(--vk); background: var(--panel);
+  border: 1px solid var(--vk-dim); border-bottom: none;
   padding: 8px 14px; letter-spacing: .1em;
   position: relative; top: 1px;
 }
@@ -274,7 +275,7 @@ thead th {
   letter-spacing: .12em; text-transform: uppercase;
   color: var(--dimmer); padding: 9px 14px; text-align: left;
 }
-thead th:first-child { color: var(--red); }
+thead th:first-child { color: var(--vk); }
 tbody tr {
   border-bottom: 1px solid var(--border);
   transition: background .12s;
@@ -289,7 +290,7 @@ tbody td .note-inline { font-size: .72rem; color: var(--dimmer); display: block;
 /* row number */
 tbody tr td:first-child::before {
   content: attr(data-n) ' ';
-  color: var(--red-dim); font-size: .65rem; margin-right: 6px;
+  color: var(--vk-dim); font-size: .65rem; margin-right: 6px;
 }
 
 /* ─── CALLOUT BOXES ─── */
@@ -312,14 +313,14 @@ tbody tr td:first-child::before {
 /* ─── SUMMARY BLOCK ─── */
 .summary {
   margin-top: 56px;
-  border: 1px solid var(--red-dim);
+  border: 1px solid var(--vk-dim);
   background: var(--surface);
   position: relative; overflow: hidden;
 }
 .summary::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--red), transparent);
+  background: linear-gradient(90deg, var(--vk), transparent);
 }
 .summary-head {
   padding: 18px 24px;
@@ -328,8 +329,8 @@ tbody tr td:first-child::before {
 }
 .summary-head-tag {
   font-family: var(--orb); font-size: .65rem; font-weight: 700;
-  color: var(--red); letter-spacing: .14em; padding: 4px 10px;
-  border: 1px solid var(--red-dim); background: rgba(232,37,61,.08);
+  color: var(--vk); letter-spacing: .14em; padding: 4px 10px;
+  border: 1px solid var(--vk-dim); background: rgba(232,75,47,.08);
 }
 .summary-head-title {
   font-family: var(--raj); font-size: 1rem; font-weight: 700;
@@ -366,13 +367,13 @@ tbody tr td:first-child::before {
   color: var(--teal); text-transform: uppercase; letter-spacing: .1em;
   margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
 }
-.delivery-title::before { content: '//'; color: var(--red-dim); }
+.delivery-title::before { content: '//'; color: var(--vk-dim); }
 .delivery ol { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .delivery ol li { display: flex; gap: 12px; font-size: .82rem; color: var(--dim); }
 .delivery ol li::before {
   content: attr(data-step);
-  font-family: var(--mono); font-size: .65rem; color: var(--red);
-  border: 1px solid var(--red-dim); padding: 1px 6px; flex-shrink: 0; margin-top: 1px;
+  font-family: var(--mono); font-size: .65rem; color: var(--vk);
+  border: 1px solid var(--vk-dim); padding: 1px 6px; flex-shrink: 0; margin-top: 1px;
   font-weight: 700;
 }
 .delivery ol li code {
@@ -384,31 +385,31 @@ tbody tr td:first-child::before {
 .doc-footer {
   position: relative; z-index: 1;
   background: var(--void);
-  border-top: 1px solid var(--red);
+  border-top: 1px solid var(--vk);
   padding: 18px 52px;
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 8px;
   font-size: .7rem; color: var(--dimmer); letter-spacing: .06em;
 }
-.doc-footer a { color: var(--red-dim); text-decoration: none; }
+.doc-footer a { color: var(--vk-dim); text-decoration: none; }
 .doc-footer-left { display: flex; gap: 24px; flex-wrap: wrap; }
-.doc-footer-id { color: var(--red); font-weight: 700; }
+.doc-footer-id { color: var(--vk); font-weight: 700; }
 
 /* ─── PRINT BUTTON ─── */
 .print-btn {
   position: fixed; bottom: 28px; right: 28px; z-index: 99;
 }
 .print-btn button {
-  background: var(--red); color: var(--white);
+  background: var(--vk); color: var(--white);
   border: none; padding: 12px 22px;
   font-family: var(--raj); font-size: .875rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: .1em;
   cursor: pointer;
   display: flex; align-items: center; gap: 10px;
-  box-shadow: 0 4px 24px rgba(232,37,61,.5), 0 0 0 1px rgba(232,37,61,.3);
+  box-shadow: 0 4px 24px rgba(232,75,47,.5), 0 0 0 1px rgba(232,75,47,.3);
   transition: all .2s;
 }
-.print-btn button:hover { background: var(--red-glow); transform: translateY(-1px); }
+.print-btn button:hover { background: var(--vk-glow); transform: translateY(-1px); }
 .print-btn button svg { flex-shrink: 0; }
 
 /* ─── PRINT ─── */
@@ -431,6 +432,15 @@ tbody tr td:first-child::before {
   <div class="cover-corner cover-corner--tr"></div>
   <div class="cover-corner cover-corner--bl"></div>
   <div class="cover-corner cover-corner--br"></div>
+
+  <!-- Vulkan logo top-right -->
+  <div style="position:absolute; top:32px; right:52px; display:flex; align-items:center; gap:12px; z-index:2;">
+    <!-- Vulkan arrow mark -->
+    <svg width="32" height="40" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="32,0 64,80 32,60 0,80" fill="#E84B2F"/>
+    </svg>
+    <span style="font-family:var(--raj); font-size:1.3rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#f5f5f5;">VULKAN</span>
+  </div>
 
   <div class="cover-sys">
     <span>SYSTEM // WEB-DEPLOY-01</span>
@@ -727,7 +737,11 @@ tbody tr td:first-child::before {
     <span>REV 1.0 · MAY 2025</span>
     <span>CONFIDENTIAL — FOR CLIENT USE ONLY</span>
   </div>
-  <span>Prepared by Pablo Malczewski · <a href="mailto:malczewskipablo@gmail.com">malczewskipablo@gmail.com</a></span>
+  <span style="display:flex; align-items:center; gap:10px;">
+    <svg width="11" height="14" viewBox="0 0 64 80" fill="none"><polygon points="32,0 64,80 32,60 0,80" fill="#E84B2F"/></svg>
+    <span style="color:rgba(232,75,47,.6); letter-spacing:.14em;">VULKAN DESIGN SYSTEM</span>
+    &nbsp;·&nbsp; Prepared by Pablo Malczewski · <a href="mailto:malczewskipablo@gmail.com">malczewskipablo@gmail.com</a>
+  </span>
 </div>
 
 <!-- ─── PRINT BUTTON ─── -->
